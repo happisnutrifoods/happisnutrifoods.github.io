@@ -130,13 +130,15 @@
       white-space: nowrap;
     }
 
-/* HERO SECTION - FULL COVERAGE VIDEO BACKGROUND */
+/* HERO SECTION */
 .hero {
   position: relative;
   min-height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
+
   overflow: hidden;
   padding: 5rem 0 4rem;
 }
@@ -149,24 +151,21 @@
   overflow: hidden;
 }
 
-/* FIXED IFRAME (COVER BEHAVIOR + ZOOM OUT) */
+/* FIXED IFRAME BACKGROUND (NO CUT-OFF SOLUTION) */
 .hero-video-wrapper iframe {
   position: absolute;
-  top: 48%; /* slightly higher to reduce bottom */
+  top: 50%;
   left: 50%;
 
-  width: 100vw;
-  height: 56.25vw; /* 16:9 ratio */
+  width: 130vw;
+  height: 130vh;
 
-  min-width: 177.77vh;
-  min-height: 100vh;
-
-  transform: translate(-50%, -50%) scale(0.96); /* 🔥 zoom out slightly */
+  transform: translate(-50%, -50%);
   pointer-events: none;
   border: 0;
 }
 
-/* OPTIONAL OVERLAY (improves text visibility) */
+/* DARK OVERLAY */
 .hero::before {
   content: "";
   position: absolute;
@@ -179,6 +178,7 @@
 .hero .container {
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
 /* GRID */
@@ -235,6 +235,31 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+/* =========================
+   📱 MOBILE FIX
+   ========================= */
+@media (max-width: 768px) {
+
+  .hero {
+    min-height: auto;
+    padding: 6rem 0 3rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero p {
+    max-width: 100%;
+  }
+
+  /* MOBILE VIDEO ADJUSTMENT */
+  .hero-video-wrapper iframe {
+    width: 180vw;
+    height: 180vh;
+  }
 }
     .btn-primary {
       background: #F5B841;
