@@ -128,7 +128,7 @@
       white-space: nowrap;
     }
 
-    /* HERO SECTION WITH NUTRITION VIDEO BACKGROUND */
+    /* HERO SECTION WITH YOUTUBE BACKGROUND */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -138,16 +138,29 @@
       padding: 6rem 0 4rem;
     }
 
+    /* YouTube iframe as background */
     .hero-video-bg {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
       z-index: 0;
-      filter: brightness(0.45) contrast(1.1) saturate(1.05);
-      transform: scale(1.01);
+      pointer-events: none;
+      overflow: hidden;
+    }
+    
+    .hero-video-bg iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100vw;
+      height: 100vh;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      object-fit: cover;
+      min-width: 100%;
+      min-height: 100%;
     }
 
     .hero-overlay {
@@ -167,7 +180,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 0.9fr;
+      grid-template-columns: 1fr 0.8fr;
       gap: 2rem;
       align-items: center;
     }
@@ -233,18 +246,6 @@
     .btn-primary:hover {
       background: #ffcd6b;
       transform: scale(1.02);
-    }
-
-    .btn-outline {
-      border: 1.5px solid #F5B841;
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(4px);
-      color: #F5B841;
-      padding: 0.75rem 1.6rem;
-      border-radius: 60px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
     }
 
     .watch-video-btn {
@@ -340,7 +341,7 @@
       color: #F5B841;
     }
 
-    /* PRODUCTS SECTION - IMAGES FULLY VISIBLE, ZOOM OUT EFFECT (contain + smaller scale) */
+    /* PRODUCTS SECTION - FULLY VISIBLE IMAGES (NO CUTOFF) */
     .products-section {
       background: #0E1410;
       padding: 4rem 0;
@@ -371,7 +372,7 @@
       flex-direction: column;
       height: 100%;
     }
-    /* IMAGE FIX: object-fit contain ensures full visibility, no cut-offs. Added slight scale-down effect via zoom-out safe padding */
+    /* CRITICAL FIX: object-fit contain + proper padding ensures no cropping, image fully visible */
     .product-img {
       width: 100%;
       height: 260px;
@@ -381,12 +382,12 @@
       justify-content: center;
       position: relative;
       overflow: hidden;
-      padding: 8px;
+      padding: 10px;
     }
     .product-img img {
       width: 100%;
       height: 100%;
-      object-fit: contain;      /* No cropping, shows entire image */
+      object-fit: contain;
       object-position: center;
       transition: transform 0.3s ease;
       background: #1c2a1a;
@@ -700,12 +701,15 @@
 </nav>
 
 <main>
-  <!-- HERO SECTION: VIDEO BACKGROUND ONLY, NO TOM BROWN IMAGE -->
+  <!-- HERO SECTION: YouTube video background (full coverage, autoplay, loop, muted) -->
   <section id="home" class="hero">
-    <video class="hero-video-bg" autoplay muted loop playsinline>
-      <source src="https://www.youtube.com/embed/Evji_ebWZQU?si=naBwtZlbNBkdBHMw" type="video/mp4">
-      <source src="https://www.youtube.com/embed/Evji_ebWZQU?si=naBwtZlbNBkdBHMw" type="video/mp4">
-    </video>
+    <div class="hero-video-bg">
+      <iframe src="https://www.youtube.com/embed/Evji_ebWZQU?autoplay=1&mute=1&loop=1&playlist=Evji_ebWZQU&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1" 
+              frameborder="0" 
+              allow="autoplay; encrypted-media" 
+              allowfullscreen>
+      </iframe>
+    </div>
     <div class="hero-overlay"></div>
     <div class="container">
       <div class="hero-grid">
@@ -718,13 +722,13 @@
             <button class="watch-video-btn" id="watchVideoBtn"><i class="fas fa-play"></i> Watch Welcome</button>
           </div>
         </div>
-        <!-- Hero image removed as requested: now only video background -->
+        <!-- Right column intentionally empty, video background does the magic -->
         <div></div>
       </div>
     </div>
   </section>
 
-  <!-- VIDEO MODAL -->
+  <!-- VIDEO MODAL (for welcome promo) -->
   <div id="videoModal" class="video-overlay">
     <div class="video-container">
       <button class="close-video" id="closeVideoBtn">✕</button>
@@ -747,10 +751,10 @@
     <div class="container">
       <div class="section-header reveal">
         <h2>Our <span>Power</span> Products</h2>
-        <p>Fuel your day with nature's finest — fully visible, real nutrition</p>
+        <p>Fuel your day with nature's finest — fully visible, zero cropping</p>
       </div>
       <div class="products-grid">
-        <!-- TOM BROWN products: images use object-fit contain, no cropping, fully displayed -->
+        <!-- Tom Brown products: object-fit contain ensures full image visibility -->
         <div class="product-card reveal">
           <div class="product-img"><span class="product-badge">🔥 PREMIUM MAX</span><img src="Tombrownlarge.jpeg" alt="Tom Brown Premium Max" onerror="this.src='https://placehold.co/600x500?text=Tom+Brown+Premium'"></div>
           <div class="product-info"><h3>Tom Brown Premium Max</h3><p class="product-desc">Radiant superfood blend — millet, maize, groundnut. Energy dense, vitamin-rich.</p><div class="price">₦15,000 <small>/ 500g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Premium Max" data-price="₦15,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
@@ -763,7 +767,7 @@
           <div class="product-img"><img src="Tombrownsmall.jpeg" alt="Tom Brown Essential" onerror="this.src='https://placehold.co/600x500?text=Tom+Brown+Essential'"></div>
           <div class="product-info"><h3>Tom Brown Essential</h3><p class="product-desc">Travel-friendly pack, same organic potency. Anytime energy.</p><div class="price">₦5,000 <small>/ 180g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Essential" data-price="₦5,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
-        <!-- SOYBEAN products with full visibility fix -->
+        <!-- Soybean products: full image display -->
         <div class="product-card reveal">
           <div class="product-img"><span class="product-badge">💪 PREMIUM PROTEIN</span><img src="soybeanlarge.jpeg" alt="Soybean Gold" onerror="this.src='https://placehold.co/600x500?text=Soybean+Gold'"></div>
           <div class="product-info"><h3>Soybean Gold (Large)</h3><p class="product-desc">High-protein, non-GMO soybeans. Ideal for milk & plant-based meals.</p><div class="price">₦12,000 <small>/ 1kg</small></div><a href="#" class="btn-wa-small" data-product="Soybean Gold Large" data-price="₦12,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
@@ -826,7 +830,7 @@
       <div class="footer-col"><h4>Categories</h4><ul><li><a href="#products">Tom Brown</a></li><li><a href="#products">Soybeans</a></li></ul></div>
       <div class="footer-col"><h4>Contact</h4><div class="contact-item"><i class="fas fa-phone-alt"></i><a href="tel:+2349019798281">+234 901 979 8281</a></div><div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:happinutrifoods@gmail.com">happinutrifoods@gmail.com</a></div><div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Port Harcourt, Nigeria</span></div><div class="contact-item"><i class="fas fa-globe"></i><a href="https://happisnutrifoods.name.ng" target="_blank">happisnutrifoods.name.ng</a></div></div>
     </div>
-    <div class="footer-bottom"><p>© 2026 Happis Nutri Foods </p><p>Developed by <a href="https://wa.me/2348132084092" style="color:#F5B841;">Esau De Genius</a></p></div>
+    <div class="footer-bottom"><p>© 2026 Happis Nutri Foods</p><p>Developed by <a href="https://wa.me/2348132084092" style="color:#F5B841;">Esau De Genius</a></p></div>
   </div>
 </footer>
 
