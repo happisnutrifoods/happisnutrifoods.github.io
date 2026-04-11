@@ -48,11 +48,11 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(10, 15, 13, 0.94);
+      background: rgba(10, 15, 13, 0.95);
       backdrop-filter: blur(16px);
       z-index: 1000;
       padding: 0.7rem 1rem;
-      border-bottom: 1px solid rgba(245, 184, 65, 0.35);
+      border-bottom: 1px solid rgba(245, 184, 65, 0.4);
     }
 
     .nav-inner {
@@ -128,7 +128,7 @@
       white-space: nowrap;
     }
 
-    /* HERO SECTION WITH YOUTUBE BACKGROUND */
+    /* HERO SECTION - FULL COVERAGE VIDEO BACKGROUND */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -138,29 +138,40 @@
       padding: 6rem 0 4rem;
     }
 
-    /* YouTube iframe as background */
-    .hero-video-bg {
+    /* Video wrapper - covers entire hero section perfectly */
+    .hero-video-wrapper {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       z-index: 0;
-      pointer-events: none;
       overflow: hidden;
     }
     
-    .hero-video-bg iframe {
+    .hero-video-wrapper iframe {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       transform: translate(-50%, -50%);
-      pointer-events: none;
       object-fit: cover;
       min-width: 100%;
       min-height: 100%;
+      pointer-events: none;
+    }
+    
+    /* Fallback for browsers */
+    .hero-video-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      pointer-events: none;
     }
 
     .hero-overlay {
@@ -169,7 +180,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.6), rgba(2, 10, 5, 0.85));
+      background: radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.65), rgba(2, 10, 5, 0.88));
       z-index: 1;
     }
 
@@ -274,7 +285,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.94);
+      background: rgba(0, 0, 0, 0.95);
       backdrop-filter: blur(14px);
       z-index: 2000;
       display: flex;
@@ -341,7 +352,7 @@
       color: #F5B841;
     }
 
-    /* PRODUCTS SECTION - FULLY VISIBLE IMAGES (NO CUTOFF) */
+    /* PRODUCTS SECTION - PERFECT IMAGE FIT FOR ALL DEVICES */
     .products-section {
       background: #0E1410;
       padding: 4rem 0;
@@ -372,17 +383,16 @@
       flex-direction: column;
       height: 100%;
     }
-    /* CRITICAL FIX: object-fit contain + proper padding ensures no cropping, image fully visible */
+    /* CRITICAL: object-fit contain ensures full original image visible, never cropped */
     .product-img {
       width: 100%;
       height: 260px;
-      background: #121b12;
+      background: #1a2418;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      overflow: hidden;
-      padding: 10px;
+      padding: 12px;
     }
     .product-img img {
       width: 100%;
@@ -390,8 +400,7 @@
       object-fit: contain;
       object-position: center;
       transition: transform 0.3s ease;
-      background: #1c2a1a;
-      border-radius: 20px;
+      border-radius: 16px;
     }
     .product-card:hover .product-img img {
       transform: scale(1.02);
@@ -650,6 +659,20 @@
       transform: translateY(0);
     }
 
+    /* Responsive adjustments for product images */
+    @media (max-width: 768px) {
+      .product-img {
+        height: 230px;
+        padding: 10px;
+      }
+    }
+    @media (max-width: 480px) {
+      .product-img {
+        height: 210px;
+        padding: 8px;
+      }
+    }
+
     @media (max-width: 900px) {
       .hero-grid {
         grid-template-columns: 1fr;
@@ -662,9 +685,6 @@
       .hero {
         padding-top: 5rem;
       }
-      .product-img {
-        height: 230px;
-      }
     }
     @media (max-width: 550px) {
       .nav-links {
@@ -672,9 +692,6 @@
       }
       .hero h1 {
         font-size: 1.9rem;
-      }
-      .product-img {
-        height: 210px;
       }
       .container {
         padding: 0 1rem;
@@ -701,10 +718,10 @@
 </nav>
 
 <main>
-  <!-- HERO SECTION: YouTube video background (full coverage, autoplay, loop, muted) -->
+  <!-- HERO SECTION: Full coverage YouTube video background -->
   <section id="home" class="hero">
-    <div class="hero-video-bg">
-      <iframe src="https://www.youtube.com/embed/Evji_ebWZQU?autoplay=1&mute=1&loop=1&playlist=Evji_ebWZQU&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1" 
+    <div class="hero-video-wrapper">
+      <iframe src="https://www.youtube.com/embed/Evji_ebWZQU?autoplay=1&mute=1&loop=1&playlist=Evji_ebWZQU&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&playsinline=1" 
               frameborder="0" 
               allow="autoplay; encrypted-media" 
               allowfullscreen>
@@ -722,13 +739,12 @@
             <button class="watch-video-btn" id="watchVideoBtn"><i class="fas fa-play"></i> Watch Welcome</button>
           </div>
         </div>
-        <!-- Right column intentionally empty, video background does the magic -->
         <div></div>
       </div>
     </div>
   </section>
 
-  <!-- VIDEO MODAL (for welcome promo) -->
+  <!-- VIDEO MODAL -->
   <div id="videoModal" class="video-overlay">
     <div class="video-container">
       <button class="close-video" id="closeVideoBtn">✕</button>
@@ -751,10 +767,10 @@
     <div class="container">
       <div class="section-header reveal">
         <h2>Our <span>Power</span> Products</h2>
-        <p>Fuel your day with nature's finest — fully visible, zero cropping</p>
+        <p>Fuel your day with nature's finest — perfectly displayed on any screen</p>
       </div>
       <div class="products-grid">
-        <!-- Tom Brown products: object-fit contain ensures full image visibility -->
+        <!-- Tom Brown Products: object-fit contain ensures original size fits perfectly -->
         <div class="product-card reveal">
           <div class="product-img"><span class="product-badge">🔥 PREMIUM MAX</span><img src="Tombrownlarge.jpeg" alt="Tom Brown Premium Max" onerror="this.src='https://placehold.co/600x500?text=Tom+Brown+Premium'"></div>
           <div class="product-info"><h3>Tom Brown Premium Max</h3><p class="product-desc">Radiant superfood blend — millet, maize, groundnut. Energy dense, vitamin-rich.</p><div class="price">₦15,000 <small>/ 500g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Premium Max" data-price="₦15,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
@@ -767,7 +783,7 @@
           <div class="product-img"><img src="Tombrownsmall.jpeg" alt="Tom Brown Essential" onerror="this.src='https://placehold.co/600x500?text=Tom+Brown+Essential'"></div>
           <div class="product-info"><h3>Tom Brown Essential</h3><p class="product-desc">Travel-friendly pack, same organic potency. Anytime energy.</p><div class="price">₦5,000 <small>/ 180g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Essential" data-price="₦5,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
-        <!-- Soybean products: full image display -->
+        <!-- Soybean Products -->
         <div class="product-card reveal">
           <div class="product-img"><span class="product-badge">💪 PREMIUM PROTEIN</span><img src="soybeanlarge.jpeg" alt="Soybean Gold" onerror="this.src='https://placehold.co/600x500?text=Soybean+Gold'"></div>
           <div class="product-info"><h3>Soybean Gold (Large)</h3><p class="product-desc">High-protein, non-GMO soybeans. Ideal for milk & plant-based meals.</p><div class="price">₦12,000 <small>/ 1kg</small></div><a href="#" class="btn-wa-small" data-product="Soybean Gold Large" data-price="₦12,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
@@ -800,7 +816,7 @@
       <div class="section-header reveal"><h2>What <span>Customers</span> Say</h2><p>Real stories from happy homes</p></div>
       <div class="testimonial-grid">
         <div class="testimonial-card reveal"><p class="testimonial-text">"Tom Brown from Happis Nutri Foods changed my family's breakfast. My kids love it, and I love the energy it gives. 100% pure!"</p><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="avatar"><div><h5>Adaobi N.</h5><p>★★★★★</p></div></div></div>
-        <div class="testimonial-card reveal"><p class="testimonial-text">"The soybean quality is unmatched. Best I’ve bought in Nigeria. Their WhatsApp ordering is super smooth."</p><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="avatar"><div><h5>Michael O.</h5><p>★★★★★</p></div></div></div>
+        <div class="testimonial-card reveal"><p class="testimonial-text">"The soybean quality is unmatched. Best I've bought in Nigeria. Their WhatsApp ordering is super smooth."</p><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="avatar"><div><h5>Michael O.</h5><p>★★★★★</p></div></div></div>
         <div class="testimonial-card reveal"><p class="testimonial-text">"I recommend Happis Nutri Foods to everyone looking for real organic nutrition. Fast delivery & great support."</p><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/45.jpg" alt="avatar"><div><h5>Grace E.</h5><p>★★★★★</p></div></div></div>
       </div>
     </div>
