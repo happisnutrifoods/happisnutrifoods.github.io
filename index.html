@@ -128,7 +128,7 @@
       white-space: nowrap;
     }
 
-    /* HERO SECTION - FULL COVERAGE VIDEO (NO BLANK SPACES) */
+    /* HERO SECTION - FULL COVERAGE WITH BACKGROUND IMAGE (NO VIDEO BLANK ISSUES) */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -137,40 +137,28 @@
       align-items: center;
       overflow: hidden;
       padding: 5rem 0 4rem;
+      background: linear-gradient(135deg, #0A1A0F 0%, #0A0F0D 100%);
     }
-
-    .hero-video-wrapper {
+    
+    /* Hero background image that covers 100% without blank spaces */
+    .hero-bg-img {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 0;
-      overflow: hidden;
-    }
-    
-    /* Fix: YouTube iframe covers entire hero section edge-to-edge */
-    .hero-video-wrapper iframe {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      transform: translate(-50%, -50%);
       object-fit: cover;
-      min-width: 100%;
-      min-height: 100%;
-      pointer-events: none;
+      object-position: center;
+      z-index: 0;
     }
     
-    /* Fallback overlay */
     .hero-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.55), rgba(2, 10, 5, 0.85));
+      background: radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.55), rgba(2, 10, 5, 0.88));
       z-index: 1;
     }
 
@@ -342,7 +330,7 @@
       color: #F5B841;
     }
 
-    /* PRODUCTS SECTION - IMAGES FIXED (CONTAIN + SHOW FULL) */
+    /* PRODUCTS SECTION - PERFECT IMAGE FIT FOR ALL DEVICES */
     .products-section {
       background: #0E1410;
       padding: 4rem 0;
@@ -373,14 +361,14 @@
       flex-direction: column;
       height: 100%;
     }
-    /* FIX: object-fit contain ensures full image visible, proper aspect ratio */
+    /* CRITICAL: object-fit contain ensures full original image visible, never cropped */
     .product-img {
       width: 100%;
       background: #1a2418;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.2rem;
+      padding: 1rem;
       min-height: 240px;
       aspect-ratio: 1 / 1;
       position: relative;
@@ -650,12 +638,11 @@
       transform: translateY(0);
     }
 
-    /* Responsive adjustments */
+    /* Responsive adjustments for product images */
     @media (max-width: 768px) {
       .product-img {
         min-height: 200px;
-        aspect-ratio: 1/1;
-        padding: 1rem;
+        padding: 0.8rem;
       }
       .hero-grid {
         grid-template-columns: 1fr;
@@ -681,7 +668,7 @@
       }
       .product-img {
         min-height: 170px;
-        padding: 0.8rem;
+        padding: 0.6rem;
       }
     }
     @media (max-width: 900px) {
@@ -696,7 +683,7 @@
 <nav class="navbar">
   <div class="nav-inner">
     <a href="#" class="logo">
-      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23F5B841'/%3E%3Ctext x='50' y='68' font-size='50' text-anchor='middle' fill='%230A0F0D' font-weight='bold'%3EHN%3C/text%3E%3C/svg%3E" alt="Happis Nutri Foods" class="logo-img">
+      <img src="logo.jpeg" alt="Happis Nutri Foods" class="logo-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23F5B841\'/%3E%3Ctext x=\'50\' y=\'68\' font-size=\'50\' text-anchor=\'middle\' fill=\'%230A0F0D\' font-weight=\'bold\'%3EHN%3C/text%3E%3C/svg%3E'">
       <span class="logo-text">Happis<span>Nutri</span>Foods</span>
     </a>
     <ul class="nav-links">
@@ -710,15 +697,9 @@
 </nav>
 
 <main>
-  <!-- HERO SECTION: FULL COVERAGE VIDEO - NO BLANK SPACES -->
+  <!-- HERO SECTION: Full coverage background image (no blank spaces, works perfectly on all devices) -->
   <section id="home" class="hero">
-    <div class="hero-video-wrapper">
-      <iframe src="https://www.youtube.com/embed/Evji_ebWZQU?autoplay=1&mute=1&loop=1&playlist=Evji_ebWZQU&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&playsinline=1" 
-              frameborder="0" 
-              allow="autoplay; encrypted-media" 
-              allowfullscreen>
-      </iframe>
-    </div>
+    <img src="hero-bg.jpg" alt="Happis Nutri Foods" class="hero-bg-img" onerror="this.style.display='none'">
     <div class="hero-overlay"></div>
     <div class="container">
       <div class="hero-grid">
@@ -762,30 +743,30 @@
         <p>Fuel your day with nature's finest — perfectly displayed on any screen</p>
       </div>
       <div class="products-grid">
-        <!-- Tom Brown Products with actual image placeholders - object-fit contain ensures original proportions -->
+        <!-- Tom Brown Products: using your actual image filenames (object-fit contain ensures original proportions) -->
         <div class="product-card reveal">
-          <div class="product-img" style="position:relative;"><span class="product-badge">🔥 PREMIUM MAX</span><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%23C49A6C'/%3E%3Ccircle cx='250' cy='250' r='100' fill='%23A57C4C'/%3E%3Ctext x='250' y='270' font-size='40' text-anchor='middle' fill='%23332B1F' font-weight='bold'%3ETB%3C/text%3E%3C/svg%3E" alt="Tom Brown Premium Max"></div>
+          <div class="product-img" style="position:relative;"><span class="product-badge">🔥 PREMIUM MAX</span><img src="Tombrownlarge.jpeg" alt="Tom Brown Premium Max" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%23C49A6C\'/%3E%3Ccircle cx=\'250\' cy=\'250\' r=\'100\' fill=\'%23A57C4C\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'40\' text-anchor=\'middle\' fill=\'%23332B1F\' font-weight=\'bold\'%3ETB%3C/text%3E%3C/svg%3E'"></div>
           <div class="product-info"><h3>Tom Brown Premium Max</h3><p class="product-desc">Radiant superfood blend — millet, maize, groundnut. Energy dense, vitamin-rich.</p><div class="price">₦15,000 <small>/ 500g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Premium Max" data-price="₦15,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
         <div class="product-card reveal">
-          <div class="product-img"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%23D9B48B'/%3E%3Ccircle cx='250' cy='250' r='95' fill='%23B88A5A'/%3E%3Ctext x='250' y='270' font-size='38' text-anchor='middle' fill='%23332B1F'%3ETC%3C/text%3E%3C/svg%3E" alt="Tom Brown Classic Plus"></div>
+          <div class="product-img"><img src="Tombrownmedium.jpeg" alt="Tom Brown Classic Plus" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%23D9B48B\'/%3E%3Ccircle cx=\'250\' cy=\'250\' r=\'95\' fill=\'%23B88A5A\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'38\' text-anchor=\'middle\' fill=\'%23332B1F\'%3ETC%3C/text%3E%3C/svg%3E'"></div>
           <div class="product-info"><h3>Tom Brown Classic Plus</h3><p class="product-desc">Perfect daily nutrition boost. Great for breakfast & weaning.</p><div class="price">₦10,000 <small>/ 350g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Classic Plus" data-price="₦10,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
         <div class="product-card reveal">
-          <div class="product-img"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%23E6C99E'/%3E%3Ccircle cx='250' cy='250' r='90' fill='%23C6945C'/%3E%3Ctext x='250' y='270' font-size='36' text-anchor='middle' fill='%23332B1F'%3ETE%3C/text%3E%3C/svg%3E" alt="Tom Brown Essential"></div>
+          <div class="product-img"><img src="Tombrownsmall.jpeg" alt="Tom Brown Essential" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%23E6C99E\'/%3E%3Ccircle cx=\'250\' cy=\'250\' r=\'90\' fill=\'%23C6945C\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'36\' text-anchor=\'middle\' fill=\'%23332B1F\'%3ETE%3C/text%3E%3C/svg%3E'"></div>
           <div class="product-info"><h3>Tom Brown Essential</h3><p class="product-desc">Travel-friendly pack, same organic potency. Anytime energy.</p><div class="price">₦5,000 <small>/ 180g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Essential" data-price="₦5,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
         <!-- Soybean Products -->
         <div class="product-card reveal">
-          <div class="product-img" style="position:relative;"><span class="product-badge">💪 PREMIUM PROTEIN</span><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%238B9A46'/%3E%3Cellipse cx='250' cy='250' rx='85' ry='75' fill='%236A7A2E'/%3E%3Ctext x='250' y='270' font-size='36' text-anchor='middle' fill='%232B2F1A'%3ESG%3C/text%3E%3C/svg%3E" alt="Soybean Gold"></div>
+          <div class="product-img" style="position:relative;"><span class="product-badge">💪 PREMIUM PROTEIN</span><img src="soybeanlarge.jpeg" alt="Soybean Gold" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%238B9A46\'/%3E%3Cellipse cx=\'250\' cy=\'250\' rx=\'85\' ry=\'75\' fill=\'%236A7A2E\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'36\' text-anchor=\'middle\' fill=\'%232B2F1A\'%3ESG%3C/text%3E%3C/svg%3E'"></div>
           <div class="product-info"><h3>Soybean Gold (Large)</h3><p class="product-desc">High-protein, non-GMO soybeans. Ideal for milk & plant-based meals.</p><div class="price">₦12,000 <small>/ 1kg</small></div><a href="#" class="btn-wa-small" data-product="Soybean Gold Large" data-price="₦12,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
         <div class="product-card reveal">
-          <div class="product-img"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%239CAF5C'/%3E%3Cellipse cx='250' cy='250' rx='80' ry='70' fill='%23738C38'/%3E%3Ctext x='250' y='270' font-size='34' text-anchor='middle' fill='%23322F1F'%3ESP%3C/text%3E%3C/svg%3E" alt="Soybean Protein Pack"></div>
+          <div class="product-img"><img src="soybeanmedium.jpeg" alt="Soybean Protein Pack" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%239CAF5C\'/%3E%3Cellipse cx=\'250\' cy=\'250\' rx=\'80\' ry=\'70\' fill=\'%23738C38\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'34\' text-anchor=\'middle\' fill=\'%23322F1F\'%3ESP%3C/text%3E%3C/svg%3E'"></div>
           <div class="product-info"><h3>Soybean Protein Pack</h3><p class="product-desc">Clean, sorted, ready-to-cook — rich in amino acids.</p><div class="price">₦8,000 <small>/ 700g</small></div><a href="#" class="btn-wa-small" data-product="Soybean Protein Pack" data-price="₦8,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
         <div class="product-card reveal">
-          <div class="product-img"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 500'%3E%3Crect width='500' height='500' fill='%23B8C77A'/%3E%3Cellipse cx='250' cy='250' rx='75' ry='68' fill='%2392A84A'/%3E%3Ctext x='250' y='270' font-size='32' text-anchor='middle' fill='%233A3F1F'%3ESD%3C/text%3E%3C/svg%3E" alt="Soybean Daily Dose"></div>
+          <div class="product-img"><img src="soybeansmall.jpeg" alt="Soybean Daily Dose" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%23B8C77A\'/%3E%3Cellipse cx=\'250\' cy=\'250\' rx=\'75\' ry=\'68\' fill=\'%2392A84A\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'32\' text-anchor=\'middle\' fill=\'%233A3F1F\'%3ESD%3C/text%3E%3C/svg%3E'"></div>
           <div class="product-info"><h3>Soybean Daily Dose</h3><p class="product-desc">Convenient portion for shakes & soups. 100% natural.</p><div class="price">₦5,000 <small>/ 350g</small></div><a href="#" class="btn-wa-small" data-product="Soybean Daily Dose" data-price="₦5,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
       </div>
@@ -830,7 +811,7 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-logo"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23F5B841'/%3E%3Ctext x='50' y='68' font-size='46' text-anchor='middle' fill='%230A0F0D' font-weight='bold'%3EHN%3C/text%3E%3C/svg%3E" alt="logo" style="width:42px; border-radius:14px;"><span class="logo-text" style="font-size:1.1rem;">Happis<span>Nutri</span></span></div>
+        <div class="footer-logo"><img src="logo.jpeg" alt="logo" style="width:42px; border-radius:14px;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23F5B841\'/%3E%3Ctext x=\'50\' y=\'68\' font-size=\'46\' text-anchor=\'middle\' fill=\'%230A0F0D\' font-weight=\'bold\'%3EHN%3C/text%3E%3C/svg%3E'"><span class="logo-text" style="font-size:1.1rem;">Happis<span>Nutri</span></span></div>
         <p style="font-size:0.75rem;">Pure, bold nutrition for the modern Nigerian. Organic Tom Brown & Soybeans.</p>
         <div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="https://wa.me/2349019798281"><i class="fab fa-whatsapp"></i></a></div>
       </div>
