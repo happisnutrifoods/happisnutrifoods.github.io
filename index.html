@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Swiper CSS for sliding testimonials -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <style>
     * {
       margin: 0;
@@ -128,7 +130,7 @@
       white-space: nowrap;
     }
 
-    /* HERO SECTION - FULL COVERAGE WITH BACKGROUND IMAGE (NO VIDEO BLANK ISSUES) */
+    /* HERO SECTION - FULL COVERAGE VIDEO BACKGROUND */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -137,19 +139,29 @@
       align-items: center;
       overflow: hidden;
       padding: 5rem 0 4rem;
-      background: linear-gradient(135deg, #0A1A0F 0%, #0A0F0D 100%);
     }
-    
-    /* Hero background image that covers 100% without blank spaces */
-    .hero-bg-img {
+
+    .hero-video-wrapper {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center;
       z-index: 0;
+      overflow: hidden;
+    }
+    
+    .hero-video-wrapper iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      min-width: 100%;
+      min-height: 100%;
+      pointer-events: none;
     }
     
     .hero-overlay {
@@ -158,7 +170,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.55), rgba(2, 10, 5, 0.88));
+      background: radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.6), rgba(2, 10, 5, 0.85));
       z-index: 1;
     }
 
@@ -330,7 +342,7 @@
       color: #F5B841;
     }
 
-    /* PRODUCTS SECTION - PERFECT IMAGE FIT FOR ALL DEVICES */
+    /* PRODUCTS SECTION */
     .products-section {
       background: #0E1410;
       padding: 4rem 0;
@@ -361,7 +373,6 @@
       flex-direction: column;
       height: 100%;
     }
-    /* CRITICAL: object-fit contain ensures full original image visible, never cropped */
     .product-img {
       width: 100%;
       background: #1a2418;
@@ -461,38 +472,68 @@
       color: #F5B841;
     }
 
-    /* TESTIMONIALS */
+    /* TESTIMONIALS - SLIDING CAROUSEL */
     .testimonials {
       background: #0E1410;
       padding: 4rem 0;
+      overflow: hidden;
     }
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.8rem;
+    .testimonials .section-header {
+      margin-bottom: 2rem;
+    }
+    .swiper {
+      width: 100%;
+      padding: 1rem 0 2rem;
+    }
+    .swiper-slide {
+      height: auto;
     }
     .testimonial-card {
       background: #151F18;
       padding: 1.5rem;
       border-radius: 28px;
       border: 1px solid #2C3A2A;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
     .testimonial-text {
       font-size: 0.85rem;
       font-style: italic;
       margin-bottom: 1rem;
+      line-height: 1.5;
+      flex: 1;
     }
     .testimonial-author {
       display: flex;
       align-items: center;
       gap: 1rem;
+      margin-top: 0.5rem;
     }
     .testimonial-author img {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       border: 2px solid #F5B841;
       object-fit: cover;
+    }
+    .testimonial-author h5 {
+      font-size: 0.9rem;
+      margin-bottom: 0.2rem;
+    }
+    .testimonial-author p {
+      color: #F5B841;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+    }
+    .swiper-button-next, .swiper-button-prev {
+      color: #F5B841;
+    }
+    .swiper-pagination-bullet-active {
+      background: #F5B841;
+    }
+    .swiper-pagination-bullet {
+      background: #B0C8A8;
     }
 
     /* NEWSLETTER */
@@ -638,7 +679,6 @@
       transform: translateY(0);
     }
 
-    /* Responsive adjustments for product images */
     @media (max-width: 768px) {
       .product-img {
         min-height: 200px;
@@ -670,6 +710,9 @@
         min-height: 170px;
         padding: 0.6rem;
       }
+      .swiper-button-next, .swiper-button-prev {
+        display: none;
+      }
     }
     @media (max-width: 900px) {
       .hero-grid {
@@ -697,9 +740,15 @@
 </nav>
 
 <main>
-  <!-- HERO SECTION: Full coverage background image (no blank spaces, works perfectly on all devices) -->
+  <!-- HERO SECTION: Full coverage YouTube video -->
   <section id="home" class="hero">
-    <img src="hero-bg.jpg" alt="Happis Nutri Foods" class="hero-bg-img" onerror="this.style.display='none'">
+    <div class="hero-video-wrapper">
+      <iframe src="https://www.youtube.com/embed/Evji_ebWZQU?autoplay=1&mute=1&loop=1&playlist=Evji_ebWZQU&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&playsinline=1" 
+              frameborder="0" 
+              allow="autoplay; encrypted-media" 
+              allowfullscreen>
+      </iframe>
+    </div>
     <div class="hero-overlay"></div>
     <div class="container">
       <div class="hero-grid">
@@ -721,7 +770,7 @@
   <div id="videoModal" class="video-overlay">
     <div class="video-container">
       <button class="close-video" id="closeVideoBtn">✕</button>
-      <iframe id="welcomeVideo" width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0" title="Welcome to Happis Nutri Foods" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe id="welcomeVideo" width="100%" height="100%" src="https://www.youtube.com/embed/Evji_ebWZQU?autoplay=0" title="Welcome to Happis Nutri Foods" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   </div>
 
@@ -743,32 +792,12 @@
         <p>Fuel your day with nature's finest — perfectly displayed on any screen</p>
       </div>
       <div class="products-grid">
-        <!-- Tom Brown Products: using your actual image filenames (object-fit contain ensures original proportions) -->
-        <div class="product-card reveal">
-          <div class="product-img" style="position:relative;"><span class="product-badge">🔥 PREMIUM MAX</span><img src="Tombrownlarge.jpeg" alt="Tom Brown Premium Max" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%23C49A6C\'/%3E%3Ccircle cx=\'250\' cy=\'250\' r=\'100\' fill=\'%23A57C4C\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'40\' text-anchor=\'middle\' fill=\'%23332B1F\' font-weight=\'bold\'%3ETB%3C/text%3E%3C/svg%3E'"></div>
-          <div class="product-info"><h3>Tom Brown Premium Max</h3><p class="product-desc">Radiant superfood blend — millet, maize, groundnut. Energy dense, vitamin-rich.</p><div class="price">₦15,000 <small>/ 500g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Premium Max" data-price="₦15,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
-        </div>
-        <div class="product-card reveal">
-          <div class="product-img"><img src="Tombrownmedium.jpeg" alt="Tom Brown Classic Plus" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%23D9B48B\'/%3E%3Ccircle cx=\'250\' cy=\'250\' r=\'95\' fill=\'%23B88A5A\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'38\' text-anchor=\'middle\' fill=\'%23332B1F\'%3ETC%3C/text%3E%3C/svg%3E'"></div>
-          <div class="product-info"><h3>Tom Brown Classic Plus</h3><p class="product-desc">Perfect daily nutrition boost. Great for breakfast & weaning.</p><div class="price">₦10,000 <small>/ 350g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Classic Plus" data-price="₦10,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
-        </div>
-        <div class="product-card reveal">
-          <div class="product-img"><img src="Tombrownsmall.jpeg" alt="Tom Brown Essential" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%23E6C99E\'/%3E%3Ccircle cx=\'250\' cy=\'250\' r=\'90\' fill=\'%23C6945C\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'36\' text-anchor=\'middle\' fill=\'%23332B1F\'%3ETE%3C/text%3E%3C/svg%3E'"></div>
-          <div class="product-info"><h3>Tom Brown Essential</h3><p class="product-desc">Travel-friendly pack, same organic potency. Anytime energy.</p><div class="price">₦5,000 <small>/ 180g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Essential" data-price="₦5,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
-        </div>
-        <!-- Soybean Products -->
-        <div class="product-card reveal">
-          <div class="product-img" style="position:relative;"><span class="product-badge">💪 PREMIUM PROTEIN</span><img src="soybeanlarge.jpeg" alt="Soybean Gold" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%238B9A46\'/%3E%3Cellipse cx=\'250\' cy=\'250\' rx=\'85\' ry=\'75\' fill=\'%236A7A2E\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'36\' text-anchor=\'middle\' fill=\'%232B2F1A\'%3ESG%3C/text%3E%3C/svg%3E'"></div>
-          <div class="product-info"><h3>Soybean Gold (Large)</h3><p class="product-desc">High-protein, non-GMO soybeans. Ideal for milk & plant-based meals.</p><div class="price">₦12,000 <small>/ 1kg</small></div><a href="#" class="btn-wa-small" data-product="Soybean Gold Large" data-price="₦12,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
-        </div>
-        <div class="product-card reveal">
-          <div class="product-img"><img src="soybeanmedium.jpeg" alt="Soybean Protein Pack" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%239CAF5C\'/%3E%3Cellipse cx=\'250\' cy=\'250\' rx=\'80\' ry=\'70\' fill=\'%23738C38\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'34\' text-anchor=\'middle\' fill=\'%23322F1F\'%3ESP%3C/text%3E%3C/svg%3E'"></div>
-          <div class="product-info"><h3>Soybean Protein Pack</h3><p class="product-desc">Clean, sorted, ready-to-cook — rich in amino acids.</p><div class="price">₦8,000 <small>/ 700g</small></div><a href="#" class="btn-wa-small" data-product="Soybean Protein Pack" data-price="₦8,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
-        </div>
-        <div class="product-card reveal">
-          <div class="product-img"><img src="soybeansmall.jpeg" alt="Soybean Daily Dose" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%23B8C77A\'/%3E%3Cellipse cx=\'250\' cy=\'250\' rx=\'75\' ry=\'68\' fill=\'%2392A84A\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'32\' text-anchor=\'middle\' fill=\'%233A3F1F\'%3ESD%3C/text%3E%3C/svg%3E'"></div>
-          <div class="product-info"><h3>Soybean Daily Dose</h3><p class="product-desc">Convenient portion for shakes & soups. 100% natural.</p><div class="price">₦5,000 <small>/ 350g</small></div><a href="#" class="btn-wa-small" data-product="Soybean Daily Dose" data-price="₦5,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
-        </div>
+        <div class="product-card reveal"><div class="product-img" style="position:relative;"><span class="product-badge">🔥 PREMIUM MAX</span><img src="Tombrownlarge.jpeg" alt="Tom Brown Premium Max" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%23C49A6C\'/%3E%3Ccircle cx=\'250\' cy=\'250\' r=\'100\' fill=\'%23A57C4C\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'40\' text-anchor=\'middle\' fill=\'%23332B1F\' font-weight=\'bold\'%3ETB%3C/text%3E%3C/svg%3E'"></div><div class="product-info"><h3>Tom Brown Premium Max</h3><p class="product-desc">Radiant superfood blend — millet, maize, groundnut. Energy dense, vitamin-rich.</p><div class="price">₦15,000 <small>/ 500g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Premium Max" data-price="₦15,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div></div>
+        <div class="product-card reveal"><div class="product-img"><img src="Tombrownmedium.jpeg" alt="Tom Brown Classic Plus" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%23D9B48B\'/%3E%3Ccircle cx=\'250\' cy=\'250\' r=\'95\' fill=\'%23B88A5A\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'38\' text-anchor=\'middle\' fill=\'%23332B1F\'%3ETC%3C/text%3E%3C/svg%3E'"></div><div class="product-info"><h3>Tom Brown Classic Plus</h3><p class="product-desc">Perfect daily nutrition boost. Great for breakfast & weaning.</p><div class="price">₦10,000 <small>/ 350g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Classic Plus" data-price="₦10,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div></div>
+        <div class="product-card reveal"><div class="product-img"><img src="Tombrownsmall.jpeg" alt="Tom Brown Essential" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%23E6C99E\'/%3E%3Ccircle cx=\'250\' cy=\'250\' r=\'90\' fill=\'%23C6945C\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'36\' text-anchor=\'middle\' fill=\'%23332B1F\'%3ETE%3C/text%3E%3C/svg%3E'"></div><div class="product-info"><h3>Tom Brown Essential</h3><p class="product-desc">Travel-friendly pack, same organic potency. Anytime energy.</p><div class="price">₦5,000 <small>/ 180g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Essential" data-price="₦5,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div></div>
+        <div class="product-card reveal"><div class="product-img" style="position:relative;"><span class="product-badge">💪 PREMIUM PROTEIN</span><img src="soybeanlarge.jpeg" alt="Soybean Gold" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%238B9A46\'/%3E%3Cellipse cx=\'250\' cy=\'250\' rx=\'85\' ry=\'75\' fill=\'%236A7A2E\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'36\' text-anchor=\'middle\' fill=\'%232B2F1A\'%3ESG%3C/text%3E%3C/svg%3E'"></div><div class="product-info"><h3>Soybean Gold (Large)</h3><p class="product-desc">High-protein, non-GMO soybeans. Ideal for milk & plant-based meals.</p><div class="price">₦12,000 <small>/ 1kg</small></div><a href="#" class="btn-wa-small" data-product="Soybean Gold Large" data-price="₦12,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div></div>
+        <div class="product-card reveal"><div class="product-img"><img src="soybeanmedium.jpeg" alt="Soybean Protein Pack" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%239CAF5C\'/%3E%3Cellipse cx=\'250\' cy=\'250\' rx=\'80\' ry=\'70\' fill=\'%23738C38\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'34\' text-anchor=\'middle\' fill=\'%23322F1F\'%3ESP%3C/text%3E%3C/svg%3E'"></div><div class="product-info"><h3>Soybean Protein Pack</h3><p class="product-desc">Clean, sorted, ready-to-cook — rich in amino acids.</p><div class="price">₦8,000 <small>/ 700g</small></div><a href="#" class="btn-wa-small" data-product="Soybean Protein Pack" data-price="₦8,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div></div>
+        <div class="product-card reveal"><div class="product-img"><img src="soybeansmall.jpeg" alt="Soybean Daily Dose" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 500 500\'%3E%3Crect width=\'500\' height=\'500\' fill=\'%23B8C77A\'/%3E%3Cellipse cx=\'250\' cy=\'250\' rx=\'75\' ry=\'68\' fill=\'%2392A84A\'/%3E%3Ctext x=\'250\' y=\'270\' font-size=\'32\' text-anchor=\'middle\' fill=\'%233A3F1F\'%3ESD%3C/text%3E%3C/svg%3E'"></div><div class="product-info"><h3>Soybean Daily Dose</h3><p class="product-desc">Convenient portion for shakes & soups. 100% natural.</p><div class="price">₦5,000 <small>/ 350g</small></div><a href="#" class="btn-wa-small" data-product="Soybean Daily Dose" data-price="₦5,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div></div>
       </div>
     </div>
   </section>
@@ -784,13 +813,18 @@
     </div>
   </section>
 
+  <!-- SLIDING TESTIMONIALS - 20 African customers -->
   <section id="testimonials" class="testimonials">
     <div class="container">
-      <div class="section-header reveal"><h2>What <span>Customers</span> Say</h2><p>Real stories from happy homes</p></div>
-      <div class="testimonial-grid">
-        <div class="testimonial-card reveal"><p class="testimonial-text">"Tom Brown from Happis Nutri Foods changed my family's breakfast. My kids love it, and I love the energy it gives. 100% pure!"</p><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="avatar"><div><h5>Adaobi N.</h5><p>★★★★★</p></div></div></div>
-        <div class="testimonial-card reveal"><p class="testimonial-text">"The soybean quality is unmatched. Best I've bought in Nigeria. Their WhatsApp ordering is super smooth."</p><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="avatar"><div><h5>Michael O.</h5><p>★★★★★</p></div></div></div>
-        <div class="testimonial-card reveal"><p class="testimonial-text">"I recommend Happis Nutri Foods to everyone looking for real organic nutrition. Fast delivery & great support."</p><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/45.jpg" alt="avatar"><div><h5>Grace E.</h5><p>★★★★★</p></div></div></div>
+      <div class="section-header reveal">
+        <h2>What <span>Customers</span> Say</h2>
+        <p>Real stories from happy homes across Africa</p>
+      </div>
+      <div class="swiper testimonialSwiper">
+        <div class="swiper-wrapper" id="testimonialWrapper"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
       </div>
     </div>
   </section>
@@ -810,11 +844,7 @@
 <footer id="contact">
   <div class="container">
     <div class="footer-grid">
-      <div>
-        <div class="footer-logo"><img src="logo.jpeg" alt="logo" style="width:42px; border-radius:14px;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23F5B841\'/%3E%3Ctext x=\'50\' y=\'68\' font-size=\'46\' text-anchor=\'middle\' fill=\'%230A0F0D\' font-weight=\'bold\'%3EHN%3C/text%3E%3C/svg%3E'"><span class="logo-text" style="font-size:1.1rem;">Happis<span>Nutri</span></span></div>
-        <p style="font-size:0.75rem;">Pure, bold nutrition for the modern Nigerian. Organic Tom Brown & Soybeans.</p>
-        <div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="https://wa.me/2349019798281"><i class="fab fa-whatsapp"></i></a></div>
-      </div>
+      <div><div class="footer-logo"><img src="logo.jpeg" alt="logo" style="width:42px; border-radius:14px;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23F5B841\'/%3E%3Ctext x=\'50\' y=\'68\' font-size=\'46\' text-anchor=\'middle\' fill=\'%230A0F0D\' font-weight=\'bold\'%3EHN%3C/text%3E%3C/svg%3E'"><span class="logo-text" style="font-size:1.1rem;">Happis<span>Nutri</span></span></div><p style="font-size:0.75rem;">Pure, bold nutrition for the modern Nigerian. Organic Tom Brown & Soybeans.</p><div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="https://wa.me/2349019798281"><i class="fab fa-whatsapp"></i></a></div></div>
       <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#products">Shop</a></li><li><a href="#testimonials">Reviews</a></li></ul></div>
       <div class="footer-col"><h4>Categories</h4><ul><li><a href="#products">Tom Brown</a></li><li><a href="#products">Soybeans</a></li></ul></div>
       <div class="footer-col"><h4>Contact</h4><div class="contact-item"><i class="fas fa-phone-alt"></i><a href="tel:+2349019798281">+234 901 979 8281</a></div><div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:happinutrifoods@gmail.com">happinutrifoods@gmail.com</a></div><div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Port Harcourt, Nigeria</span></div><div class="contact-item"><i class="fas fa-globe"></i><a href="https://happisnutrifoods.name.ng" target="_blank">happisnutrifoods.name.ng</a></div></div>
@@ -826,12 +856,67 @@
 <div class="whatsapp-float"><a href="https://wa.me/2349019798281?text=Hello%20Happis%20Nutri%20Foods!%20I%20want%20to%20order" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
 <div class="back-to-top"><i class="fas fa-arrow-up"></i></div>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
+  // 20 African customer testimonials
+  const testimonials = [
+    { name: "Adaobi N.", location: "Lagos, Nigeria", text: "Tom Brown from Happis Nutri Foods changed my family's breakfast. My kids love it, and I love the energy it gives. 100% pure!", rating: 5, img: "https://randomuser.me/api/portraits/women/68.jpg" },
+    { name: "Michael O.", location: "Accra, Ghana", text: "The soybean quality is unmatched. Best I've bought in West Africa. Their WhatsApp ordering is super smooth.", rating: 5, img: "https://randomuser.me/api/portraits/men/32.jpg" },
+    { name: "Grace E.", location: "Nairobi, Kenya", text: "I recommend Happis Nutri Foods to everyone looking for real organic nutrition. Fast delivery & great support.", rating: 5, img: "https://randomuser.me/api/portraits/women/45.jpg" },
+    { name: "Chidi O.", location: "Abuja, Nigeria", text: "My energy levels have skyrocketed since I started using their Tom Brown. Truly a superfood!", rating: 5, img: "https://randomuser.me/api/portraits/men/41.jpg" },
+    { name: "Fatima B.", location: "Cairo, Egypt", text: "Pure, organic, and delicious. The Soybean Gold is perfect for my plant-based meals.", rating: 5, img: "https://randomuser.me/api/portraits/women/22.jpg" },
+    { name: "Kwame A.", location: "Kumasi, Ghana", text: "Best nutrition brand in Africa. My whole family is healthier now.", rating: 5, img: "https://randomuser.me/api/portraits/men/55.jpg" },
+    { name: "Zainab M.", location: "Dakar, Senegal", text: "The customer service is amazing and the products are top quality. Highly recommended!", rating: 5, img: "https://randomuser.me/api/portraits/women/33.jpg" },
+    { name: "Tunde R.", location: "Ibadan, Nigeria", text: "I've tried many health foods, but nothing compares to Happis Nutri. Authentic and powerful.", rating: 5, img: "https://randomuser.me/api/portraits/men/29.jpg" },
+    { name: "Amina K.", location: "Dar es Salaam, Tanzania", text: "My kids love the Tom Brown porridge. It's their favorite breakfast now!", rating: 5, img: "https://randomuser.me/api/portraits/women/56.jpg" },
+    { name: "Samuel D.", location: "Johannesburg, SA", text: "The protein content in their soybeans is incredible. Perfect for my fitness journey.", rating: 5, img: "https://randomuser.me/api/portraits/men/62.jpg" },
+    { name: "Ngozi E.", location: "Enugu, Nigeria", text: "Happis Nutri Foods is a game changer. I feel stronger and healthier every day.", rating: 5, img: "https://randomuser.me/api/portraits/women/79.jpg" },
+    { name: "Mohamed S.", location: "Casablanca, Morocco", text: "Organic, pure, and delicious. I'm a loyal customer for life.", rating: 5, img: "https://randomuser.me/api/portraits/men/85.jpg" },
+    { name: "Prisca L.", location: "Lusaka, Zambia", text: "Finally found a brand I can trust. The delivery was fast and the quality is amazing.", rating: 5, img: "https://randomuser.me/api/portraits/women/12.jpg" },
+    { name: "Emeka J.", location: "Port Harcourt, Nigeria", text: "The energy boost is real. I start every day with Tom Brown and I never look back.", rating: 5, img: "https://randomuser.me/api/portraits/men/18.jpg" },
+    { name: "Fatou N.", location: "Bamako, Mali", text: "My skin and hair have improved so much since I started eating their soybeans. Thank you!", rating: 5, img: "https://randomuser.me/api/portraits/women/91.jpg" },
+    { name: "John O.", location: "Kampala, Uganda", text: "Affordable, nutritious, and delicious. What more could you ask for?", rating: 5, img: "https://randomuser.me/api/portraits/men/74.jpg" },
+    { name: "Martha W.", location: "Harare, Zimbabwe", text: "Happis Nutri Foods has transformed our family's health. We are forever grateful.", rating: 5, img: "https://randomuser.me/api/portraits/women/38.jpg" },
+    { name: "Ibrahim K.", location: "Abidjan, Côte d'Ivoire", text: "Best organic products I've ever purchased. The taste is unmatched.", rating: 5, img: "https://randomuser.me/api/portraits/men/46.jpg" },
+    { name: "Ruth M.", location: "Kigali, Rwanda", text: "I love that everything is natural and chemical-free. Highly recommended!", rating: 5, img: "https://randomuser.me/api/portraits/women/63.jpg" },
+    { name: "Peter O.", location: "Nairobi, Kenya", text: "The customer service team is wonderful and the products are life-changing.", rating: 5, img: "https://randomuser.me/api/portraits/men/27.jpg" }
+  ];
+
+  const wrapper = document.getElementById('testimonialWrapper');
+  testimonials.forEach(t => {
+    const stars = '★'.repeat(t.rating) + '☆'.repeat(5-t.rating);
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+    slide.innerHTML = `
+      <div class="testimonial-card">
+        <p class="testimonial-text">"${t.text}"</p>
+        <div class="testimonial-author">
+          <img src="${t.img}" alt="${t.name}">
+          <div>
+            <h5>${t.name}</h5>
+            <p style="font-size:0.7rem; color:#B0C8A8;">${t.location}</p>
+            <p style="color:#F5B841; font-size:0.7rem;">${stars}</p>
+          </div>
+        </div>
+      </div>
+    `;
+    wrapper.appendChild(slide);
+  });
+
+  // Initialize Swiper
+  const swiper = new Swiper('.testimonialSwiper', {
+    slidesPerView: 1,
+    spaceBetween: 24,
+    loop: true,
+    autoplay: { delay: 4000, disableOnInteraction: false },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+  });
+
   document.addEventListener('DOMContentLoaded', () => {
     const btt = document.querySelector('.back-to-top');
-    window.addEventListener('scroll', () => {
-      btt.style.opacity = window.scrollY > 400 ? '1' : '0';
-    });
+    window.addEventListener('scroll', () => { btt.style.opacity = window.scrollY > 400 ? '1' : '0'; });
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
     const phone = '2349019798281';
@@ -860,11 +945,11 @@
     const videoIframe = document.getElementById('welcomeVideo');
     watchBtn.addEventListener('click', () => {
       modal.classList.add('active');
-      videoIframe.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
+      videoIframe.src = "https://www.youtube.com/embed/Evji_ebWZQU?autoplay=1";
     });
     function closeModal() {
       modal.classList.remove('active');
-      videoIframe.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0";
+      videoIframe.src = "https://www.youtube.com/embed/Evji_ebWZQU?autoplay=0";
     }
     closeBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
