@@ -149,7 +149,7 @@
   overflow: hidden;
 }
 
-/* FIXED IFRAME (COVER BEHAVIOR) */
+/* FIXED IFRAME (COVER BEHAVIOR + ZOOM OUT) */
 .hero-video-wrapper iframe {
   position: absolute;
   top: 48%; /* slightly higher to reduce bottom */
@@ -161,7 +161,7 @@
   min-width: 177.77vh;
   min-height: 100vh;
 
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.96); /* 🔥 zoom out slightly */
   pointer-events: none;
   border: 0;
 }
@@ -236,7 +236,6 @@
   gap: 1rem;
   flex-wrap: wrap;
 }
-
     .btn-primary {
       background: #F5B841;
       color: #0A0F0D;
