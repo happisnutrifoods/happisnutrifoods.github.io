@@ -301,7 +301,7 @@
       color: #F5B841;
     }
 
-    /* PRODUCTS SECTION - FIX: SHOW FULL IMAGE WITHOUT ANY CROPPING (NO SIDES CUT OFF) */
+    /* PRODUCTS SECTION - FIX: IMAGES FIT FRAME PERFECTLY, MAINTAIN ASPECT RATIO, NO CROPPING */
     .products-section {
       background: #0E1410;
       padding: 4rem 0;
@@ -332,31 +332,31 @@
       flex-direction: column;
       height: 100%;
     }
-    /* CRITICAL FIX: Use contain with auto height OR set a flexible container that respects image ratio */
+    /* IMAGE FIX: object-fit cover fills the frame completely while maintaining aspect ratio */
     .product-img {
       width: 100%;
+      height: 260px;
       background: #1E2A1C;
+      overflow: hidden;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      /* No fixed height - let it be determined by image to avoid cropping */
-      min-height: 220px;
-      padding: 1rem;
     }
     .product-img img {
       width: 100%;
-      height: auto;
-      max-height: 260px;
-      object-fit: contain;   /* Ensures FULL image visible, no side cropping, maintains ratio */
-      display: block;
+      height: 100%;
+      object-fit: cover;     /* Fills the entire frame, maintains ratio, no distortion */
+      object-position: center center;
       transition: transform 0.4s ease;
-      background: #1a2418;
-      border-radius: 16px;
+      display: block;
     }
-    /* Radiant effect without cutting off */
+    /* Radiant effect for premium max */
     .radiant-img {
-      filter: drop-shadow(0 0 14px rgba(245, 184, 65, 0.6)) brightness(1.02);
+      filter: brightness(1.03) contrast(1.02) drop-shadow(0 0 10px rgba(245, 184, 65, 0.5));
+    }
+    .product-card:hover .product-img img {
+      transform: scale(1.05);
     }
     .product-badge {
       position: absolute;
@@ -623,8 +623,8 @@
       .nav-links {
         gap: 0.7rem;
       }
-      .product-img img {
-        max-height: 220px;
+      .product-img {
+        height: 230px;
       }
     }
     @media (max-width: 550px) {
@@ -634,8 +634,8 @@
       .hero h1 {
         font-size: 1.9rem;
       }
-      .product-img img {
-        max-height: 200px;
+      .product-img {
+        height: 210px;
       }
       .container {
         padding: 0 1rem;
@@ -707,7 +707,7 @@
         <p>Fuel your day with nature's finest</p>
       </div>
       <div class="products-grid">
-        <!-- TOM BROWN: FULL IMAGE VISIBLE - NO CROPPING ON SIDES OR TOP/BOTTOM -->
+        <!-- TOM BROWN: UPDATED PRICES 15k,10k,5k - object-fit cover fills frame perfectly -->
         <div class="product-card reveal">
           <div class="product-img"><span class="product-badge">🔥 PREMIUM MAX</span><img src="Tombrownlarge.jpeg" alt="Tom Brown Premium Max" class="radiant-img" onerror="this.src='https://placehold.co/600x400?text=Tom+Brown+Max'"></div>
           <div class="product-info"><h3>Tom Brown Premium Max</h3><p class="product-desc">Radiant superfood blend — millet, maize, groundnut. Energy dense, vitamin-rich.</p><div class="price">₦15,000 <small>/ 500g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Premium Max" data-price="₦15,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
