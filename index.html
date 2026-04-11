@@ -33,10 +33,10 @@
     .container {
       max-width: 1300px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
     }
 
-    /* ----- GLOW & MODERN ELEMENTS ----- */
+    /* GLOW TEXT */
     .glow-text {
       background: linear-gradient(135deg, #F5B841 0%, #E6892E 100%);
       -webkit-background-clip: text;
@@ -44,16 +44,16 @@
       color: transparent;
     }
 
-    /* ----- NAVIGATION (DARK LUXE) ----- */
+    /* ----- NAVIGATION (COMPACT FOR MOBILE) ----- */
     .navbar {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(10, 15, 13, 0.92);
-      backdrop-filter: blur(16px);
+      background: rgba(10, 15, 13, 0.96);
+      backdrop-filter: blur(14px);
       z-index: 1000;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid rgba(245, 184, 65, 0.2);
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid rgba(245, 184, 65, 0.25);
       transition: all 0.3s;
     }
 
@@ -63,27 +63,29 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 1rem;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.8rem;
+      gap: 0.5rem;
       text-decoration: none;
+      flex-shrink: 0;
     }
 
     .logo-img {
-      width: 44px;
-      height: 44px;
-      border-radius: 16px;
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
       object-fit: cover;
       border: 1.5px solid #F5B841;
-      box-shadow: 0 0 12px rgba(245, 184, 65, 0.3);
+      box-shadow: 0 0 10px rgba(245, 184, 65, 0.3);
     }
 
     .logo-text {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: #F5B841;
       letter-spacing: -0.02em;
@@ -96,7 +98,7 @@
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 1.2rem;
       list-style: none;
     }
 
@@ -104,53 +106,38 @@
       text-decoration: none;
       color: #CFE3CD;
       font-weight: 500;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       letter-spacing: 0.02em;
       transition: 0.2s;
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #F5B841;
-      transition: 0.25s;
+      white-space: nowrap;
     }
 
     .nav-links a:hover {
       color: #F5B841;
     }
 
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
     .btn-wa {
       background: #25D366;
       color: #0A0F0D;
-      padding: 0.6rem 1.4rem;
+      padding: 0.4rem 1rem;
       border-radius: 40px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.4rem;
+      white-space: nowrap;
       transition: all 0.2s;
-      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+      box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
     }
 
     .btn-wa:hover {
       background: #1da15a;
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
     }
 
-    /* ----- HERO (BOLD ENERGY) ----- */
+    /* HERO SECTION - BETTER TEXT WRAP ON MOBILE */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -158,25 +145,13 @@
       background: radial-gradient(circle at 80% 20%, #142118, #060907);
       position: relative;
       overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      background: #F5B841;
-      filter: blur(120px);
-      opacity: 0.15;
-      top: -100px;
-      right: -50px;
-      border-radius: 50%;
+      padding: 6rem 0 3rem;
     }
 
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      gap: 2rem;
       align-items: center;
       position: relative;
       z-index: 2;
@@ -190,22 +165,22 @@
       color: #F5B841;
       font-size: 0.7rem;
       font-weight: 700;
-      padding: 0.4rem 1rem;
+      padding: 0.3rem 0.9rem;
       border-radius: 60px;
       letter-spacing: 0.05em;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     .hero h1 {
-      font-size: 4rem;
+      font-size: clamp(2.2rem, 8vw, 4rem);
       font-weight: 700;
       line-height: 1.2;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
       color: #FFFFFF;
+      word-break: break-word;
     }
 
     .hero h1 i {
-      color: #F5B841;
       font-style: normal;
       background: linear-gradient(135deg, #F5B841, #FFD966);
       -webkit-background-clip: text;
@@ -214,63 +189,98 @@
     }
 
     .hero p {
-      font-size: 1rem;
+      font-size: clamp(0.85rem, 3vw, 1rem);
       color: #B6D0B0;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
       max-width: 480px;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 1rem;
+      gap: 0.8rem;
       flex-wrap: wrap;
     }
 
-    .btn-primary {
-      background: #F5B841;
-      color: #0A0F0D;
-      padding: 0.9rem 2rem;
-      border-radius: 60px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: all 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      box-shadow: 0 6px 18px rgba(245, 184, 65, 0.3);
-    }
-
-    .btn-primary:hover {
-      background: #e0a32e;
-      transform: translateY(-3px);
-    }
-
-    .btn-outline {
-      border: 1.5px solid #F5B841;
-      background: transparent;
-      color: #F5B841;
-      padding: 0.9rem 2rem;
-      border-radius: 60px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.2s;
-    }
-
-    .btn-outline:hover {
-      background: rgba(245, 184, 65, 0.1);
-      transform: translateY(-2px);
+    .btn-primary, .btn-outline {
+      padding: 0.7rem 1.4rem;
+      font-size: 0.85rem;
     }
 
     .hero-image img {
       width: 100%;
-      border-radius: 48px;
-      box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.6);
-      border: 1px solid rgba(245, 184, 65, 0.3);
-      transition: transform 0.4s;
+      border-radius: 36px;
+      box-shadow: 0 25px 35px -15px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(245, 184, 65, 0.4);
+      transition: transform 0.3s;
     }
 
-    .hero-image img:hover {
-      transform: scale(1.02);
+    /* VIDEO MODAL STYLES */
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    .video-overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .video-container {
+      width: 85%;
+      max-width: 800px;
+      background: #000;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 25px 45px rgba(0,0,0,0.5);
+      border: 2px solid #F5B841;
+    }
+    .video-container iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: block;
+    }
+    .close-video {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: #F5B841;
+      color: #0A0F0D;
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .watch-video-btn {
+      background: rgba(0,0,0,0.6);
+      border: 1px solid #F5B841;
+      border-radius: 60px;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #F5B841;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .watch-video-btn:hover {
+      background: #F5B841;
+      color: #0A0F0D;
     }
 
     /* Trust Strip */
@@ -278,230 +288,122 @@
       background: #111915;
       border-top: 1px solid #2A352A;
       border-bottom: 1px solid #2A352A;
-      padding: 1.2rem 0;
+      padding: 0.8rem 0;
     }
-
     .trust-items {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      gap: 1rem;
     }
-
     .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.75rem;
     }
 
-    .trust-item i {
-      font-size: 1.4rem;
-      color: #F5B841;
-    }
-
-    /* Section Headers */
-    .section-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-header h2 {
-      font-size: 2.8rem;
-      color: #FFFFFF;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-header h2 span {
-      color: #F5B841;
-    }
-
-    .section-header p {
-      color: #A0B89A;
-      font-size: 0.9rem;
-    }
-
-    /* Products Grid (MAD STYLE) */
+    /* Products */
     .products-section {
       background: #0E1410;
-      padding: 5rem 0;
+      padding: 4rem 0;
     }
-
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 2rem;
     }
-
     .product-card {
       background: #151F18;
       border-radius: 32px;
       overflow: hidden;
-      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      transition: all 0.3s;
       border: 1px solid #2C3A2A;
-      backdrop-filter: blur(2px);
+      display: flex;
+      flex-direction: column;
     }
-
-    .product-card:hover {
-      transform: translateY(-12px);
-      border-color: #F5B841;
-      box-shadow: 0 25px 35px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(245, 184, 65, 0.2);
-    }
-
     .product-img {
-      height: 270px;
+      height: 260px;
       overflow: hidden;
       background: #1E2A1C;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-
     .product-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.4s;
     }
-
     .product-card:hover .product-img img {
-      transform: scale(1.08);
+      transform: scale(1.05);
     }
-
+    /* RADIANT EFFECT FOR TOM BROWN PREMIUM MAX */
+    .radiant-img {
+      filter: drop-shadow(0 0 12px rgba(245, 184, 65, 0.6)) brightness(1.05) contrast(1.05);
+      border-radius: 24px;
+    }
     .product-badge {
       position: absolute;
-      top: 16px;
-      left: 16px;
+      top: 12px;
+      left: 12px;
       background: #F5B841;
       color: #0A0F0D;
       font-weight: 800;
       font-size: 0.7rem;
-      padding: 0.3rem 1rem;
+      padding: 0.25rem 1rem;
       border-radius: 40px;
       z-index: 2;
-      letter-spacing: 0.05em;
     }
-
     .product-info {
-      padding: 1.6rem;
+      padding: 1.4rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
-
-    .product-info h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-      color: #FFFFFF;
-    }
-
-    .product-desc {
-      font-size: 0.8rem;
-      color: #B0C8A8;
-      margin-bottom: 1rem;
-      line-height: 1.5;
-    }
-
     .price {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 800;
       color: #F5B841;
-      margin-bottom: 1rem;
+      margin: 0.5rem 0;
     }
-
-    .price small {
-      font-size: 0.75rem;
-      font-weight: 400;
-      color: #8AA082;
-    }
-
     .btn-wa-small {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
       background: #25D366;
       color: #0A0F0D;
       font-weight: 700;
-      padding: 0.8rem;
+      padding: 0.7rem;
       border-radius: 60px;
+      text-align: center;
       text-decoration: none;
       font-size: 0.75rem;
-      transition: all 0.2s;
-    }
-
-    .btn-wa-small:hover {
-      background: #1fbc5c;
-      transform: translateY(-2px);
-    }
-
-    /* Features Grid (Neon Vibe) */
-    .features {
-      padding: 5rem 0;
-      background: #0A0F0D;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
-
-    .feature-card {
-      text-align: center;
-      padding: 1.5rem;
-      background: #111915;
-      border-radius: 28px;
-      border: 1px solid #2A352A;
+      margin-top: auto;
       transition: 0.2s;
     }
 
-    .feature-card i {
-      font-size: 2.2rem;
-      color: #F5B841;
-      margin-bottom: 1rem;
+    /* Features */
+    .features {
+      padding: 4rem 0;
     }
-
-    .feature-card h4 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+    .feature-card {
+      text-align: center;
+      padding: 1.2rem;
+      background: #111915;
+      border-radius: 24px;
     }
 
     /* Testimonials */
     .testimonials {
       background: #0E1410;
-      padding: 5rem 0;
+      padding: 4rem 0;
     }
-
     .testimonial-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-
-    .testimonial-card {
-      background: #151F18;
-      padding: 2rem;
-      border-radius: 28px;
-      border: 1px solid #2C3A2A;
-    }
-
-    .testimonial-text {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      font-style: italic;
-      margin-bottom: 1.5rem;
-      color: #CBE5C5;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .testimonial-author img {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #F5B841;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
     }
 
     /* Newsletter */
@@ -509,156 +411,45 @@
       background: linear-gradient(145deg, #151F18, #0A0F0D);
       border: 1px solid #F5B84130;
       border-radius: 48px;
-      padding: 3rem 2rem;
+      padding: 2rem 1.5rem;
       text-align: center;
       margin: 2rem auto;
-      max-width: 800px;
-    }
-
-    .newsletter h3 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .newsletter-form {
-      display: flex;
-      gap: 1rem;
-      max-width: 500px;
-      margin: 1.5rem auto 0;
-    }
-
-    .newsletter-form input {
-      flex: 1;
-      padding: 1rem 1.2rem;
-      border-radius: 60px;
-      border: none;
-      background: #1E2A1C;
-      color: white;
-      font-family: inherit;
-      outline: none;
-    }
-
-    .newsletter-form button {
-      background: #F5B841;
-      border: none;
-      padding: 0 2rem;
-      border-radius: 60px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.2s;
     }
 
     /* Footer */
     footer {
       background: #060907;
-      padding: 4rem 0 2rem;
-      border-top: 1px solid #2A352A;
+      padding: 3rem 0 2rem;
     }
-
     .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
     }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      margin-bottom: 1rem;
-    }
-
-    .footer-logo img {
-      width: 42px;
-      border-radius: 12px;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .social-links a {
-      color: #B0C8A8;
-      font-size: 1.2rem;
-      transition: 0.2s;
-    }
-
-    .social-links a:hover {
-      color: #F5B841;
-    }
-
-    .footer-col h4 {
-      color: #F5B841;
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      margin-bottom: 1.2rem;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col li {
-      margin-bottom: 0.6rem;
-    }
-
-    .footer-col a {
-      color: #A0B89A;
-      text-decoration: none;
-      font-size: 0.8rem;
-    }
-
-    .footer-col a:hover {
-      color: #F5B841;
-    }
-
-    .contact-item {
-      display: flex;
-      gap: 0.8rem;
-      margin-bottom: 0.8rem;
-      font-size: 0.8rem;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid #2A352A;
-      margin-top: 3rem;
-      padding-top: 2rem;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      font-size: 0.7rem;
-    }
-
-    /* Floating WA */
     .whatsapp-float {
       position: fixed;
-      bottom: 2rem;
-      right: 2rem;
+      bottom: 1.5rem;
+      right: 1.5rem;
       z-index: 999;
     }
-
     .whatsapp-float a {
       background: #25D366;
-      width: 58px;
-      height: 58px;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 1.8rem;
       color: #0A0F0D;
-      box-shadow: 0 8px 22px rgba(37, 211, 102, 0.4);
-      transition: 0.2s;
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
     }
-
     .back-to-top {
       position: fixed;
-      bottom: 6rem;
-      right: 2rem;
-      width: 44px;
-      height: 44px;
+      bottom: 5rem;
+      right: 1.5rem;
+      width: 42px;
+      height: 42px;
       background: #F5B841;
       border-radius: 50%;
       display: flex;
@@ -667,46 +458,65 @@
       cursor: pointer;
       opacity: 0;
       transition: 0.2s;
-      color: #0A0F0D;
     }
-
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(25px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
-
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
+    /* Mobile Tweaks */
     @media (max-width: 900px) {
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.8rem;
       }
-      .features-grid,
-      .testimonial-grid,
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
+      .hero {
+        padding-top: 5rem;
       }
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      .hero p {
+        max-width: 100%;
+      }
+      .nav-links {
+        gap: 0.8rem;
+      }
+      .nav-links a {
+        font-size: 0.7rem;
+      }
+      .btn-wa {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.65rem;
+      }
+      .logo-text {
+        font-size: 1rem;
+      }
+      .container {
+        padding: 0 1.2rem;
+      }
+      .product-img {
+        height: 220px;
+      }
+    }
+    @media (max-width: 550px) {
       .nav-links {
         display: none;
       }
+      .navbar {
+        padding: 0.6rem 0.8rem;
+      }
       .hero h1 {
-        font-size: 2.6rem;
+        font-size: 2rem;
       }
-    }
-
-    @media (max-width: 600px) {
-      .features-grid,
-      .testimonial-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-      .newsletter-form {
-        flex-direction: column;
+      .hero-buttons .btn-primary, .hero-buttons .btn-outline {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.75rem;
       }
     }
   </style>
@@ -725,7 +535,7 @@
       <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="https://wa.me/2349019798281" class="btn-wa"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
+    <a href="https://wa.me/2349019798281" class="btn-wa"><i class="fab fa-whatsapp"></i> Order</a>
   </div>
 </nav>
 
@@ -739,23 +549,31 @@
           <p>Premium Tom Brown superfood & high-protein Soybeans — crafted for strength, energy, and total wellness. Straight from our farm to you.</p>
           <div class="hero-buttons">
             <a href="#products" class="btn-primary">Shop Now <i class="fas fa-arrow-right"></i></a>
-            <a href="#contact" class="btn-outline">Contact Us</a>
+            <button class="watch-video-btn" id="watchVideoBtn"><i class="fas fa-play"></i> Watch Welcome Video</button>
           </div>
         </div>
         <div class="hero-image reveal">
-          <img src="Tombrownlarge.jpeg" alt="Tom Brown Premium Mix" onerror="this.src='https://placehold.co/600x500?text=Tom+Brown'">
+          <img src="Tombrownlarge.jpeg" alt="Tom Brown Premium Max" onerror="this.src='https://placehold.co/600x500?text=Tom+Brown'">
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Video Modal -->
+  <div id="videoModal" class="video-overlay">
+    <div class="video-container">
+      <button class="close-video" id="closeVideoBtn">✕</button>
+      <iframe id="welcomeVideo" width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0" title="Welcome to Happis Nutri Foods" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
   <div class="trust-strip">
     <div class="container">
       <div class="trust-items">
-        <div class="trust-item"><i class="fas fa-leaf"></i><span>100% Organic</span></div>
-        <div class="trust-item"><i class="fas fa-truck-fast"></i><span>Fast Delivery Nigeria</span></div>
-        <div class="trust-item"><i class="fab fa-whatsapp"></i><span>Instant Support</span></div>
-        <div class="trust-item"><i class="fas fa-star"></i><span>Premium Quality</span></div>
+        <div class="trust-item"><i class="fas fa-leaf"></i><span> 100% Organic</span></div>
+        <div class="trust-item"><i class="fas fa-truck-fast"></i><span> Fast Delivery</span></div>
+        <div class="trust-item"><i class="fab fa-whatsapp"></i><span> Instant Support</span></div>
+        <div class="trust-item"><i class="fas fa-star"></i><span> Premium Quality</span></div>
       </div>
     </div>
   </div>
@@ -767,31 +585,31 @@
         <p>Fuel your day with nature's finest</p>
       </div>
       <div class="products-grid">
-        <!-- Tom Brown Trio -->
+        <!-- TOM BROWN UPDATED PRICES: 15k, 10k, 5k -->
         <div class="product-card reveal">
-          <div class="product-img"><span class="product-badge">🔥 BESTSELLER</span><img src="Tombrownlarge.jpeg" alt="Tom Brown Large"></div>
-          <div class="product-info"><h3>Tom Brown Large Pack</h3><p class="product-desc">Rich blend of millet, maize, groundnut — energy dense, vitamin-rich superfood for all ages.</p><div class="price">₦6,500 <small>/ 500g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Large Pack" data-price="₦6,500"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
+          <div class="product-img"><span class="product-badge">🔥 PREMIUM MAX</span><img src="Tombrownlarge.jpeg" alt="Tom Brown Premium Max" class="radiant-img"></div>
+          <div class="product-info"><h3>Tom Brown Premium Max</h3><p class="product-desc">Radiant superfood blend — millet, maize, groundnut. Energy dense, vitamin-rich.</p><div class="price">₦15,000 <small>/ 500g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Premium Max" data-price="₦15,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
         <div class="product-card reveal">
-          <div class="product-img"><img src="Tombrownmedium.jpeg" alt="Tom Brown Medium"></div>
-          <div class="product-info"><h3>Tom Brown Medium</h3><p class="product-desc">Perfect daily nutrition boost. Great for breakfast smoothies & weaning food.</p><div class="price">₦4,200 <small>/ 300g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Medium" data-price="₦4,200"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
+          <div class="product-img"><img src="Tombrownmedium.jpeg" alt="Tom Brown Medium" onerror="this.src='https://placehold.co/400x300?text=Tom+Brown'"></div>
+          <div class="product-info"><h3>Tom Brown Classic Plus</h3><p class="product-desc">Perfect daily nutrition boost. Great for breakfast & weaning.</p><div class="price">₦10,000 <small>/ 350g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Classic Plus" data-price="₦10,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
         <div class="product-card reveal">
-          <div class="product-img"><img src="Tombrownsmall.jpeg" alt="Tom Brown Small"></div>
-          <div class="product-info"><h3>Tom Brown Small</h3><p class="product-desc">Travel-friendly pack, same organic potency. Easy to carry, anytime energy.</p><div class="price">₦2,500 <small>/ 150g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Small" data-price="₦2,500"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
+          <div class="product-img"><img src="Tombrownsmall.jpeg" alt="Tom Brown Starter" onerror="this.src='https://placehold.co/400x300?text=Tom+Brown'"></div>
+          <div class="product-info"><h3>Tom Brown Essential</h3><p class="product-desc">Travel-friendly pack, same organic potency. Anytime energy.</p><div class="price">₦5,000 <small>/ 180g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Essential" data-price="₦5,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
-        <!-- Soybean Trio -->
+        <!-- SOYBEAN UPDATED: 12k, 8k, 5k -->
         <div class="product-card reveal">
-          <div class="product-img"><span class="product-badge">💪 PROTEIN</span><img src="soybeanlarge.jpeg" alt="Soybean Large"></div>
-          <div class="product-info"><h3>Soybean Premium (Large)</h3><p class="product-desc">High-protein, non-GMO soybeans. Ideal for milk, tofu, and plant-based meals.</p><div class="price">₦7,500 <small>/ 1kg</small></div><a href="#" class="btn-wa-small" data-product="Soybean Premium Large" data-price="₦7,500"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
-        </div>
-        <div class="product-card reveal">
-          <div class="product-img"><img src="soybeanmedium.jpeg" alt="Soybean Medium"></div>
-          <div class="product-info"><h3>Soybean Medium Pack</h3><p class="product-desc">Clean, sorted, ready-to-cook soybeans — rich in essential amino acids.</p><div class="price">₦5,000 <small>/ 600g</small></div><a href="#" class="btn-wa-small" data-product="Soybean Medium" data-price="₦5,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
+          <div class="product-img"><span class="product-badge">💪 PREMIUM PROTEIN</span><img src="soybeanlarge.jpeg" alt="Soybean Large" onerror="this.src='https://placehold.co/400x300?text=Soybean'"></div>
+          <div class="product-info"><h3>Soybean Gold (Large)</h3><p class="product-desc">High-protein, non-GMO soybeans. Ideal for milk & plant-based meals.</p><div class="price">₦12,000 <small>/ 1kg</small></div><a href="#" class="btn-wa-small" data-product="Soybean Gold Large" data-price="₦12,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
         <div class="product-card reveal">
-          <div class="product-img"><img src="soybeansmall.jpeg" alt="Soybean Small"></div>
-          <div class="product-info"><h3>Soybean Small Pack</h3><p class="product-desc">Convenient portion for daily protein shakes & soups. 100% natural.</p><div class="price">₦3,200 <small>/ 300g</small></div><a href="#" class="btn-wa-small" data-product="Soybean Small" data-price="₦3,200"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
+          <div class="product-img"><img src="soybeanmedium.jpeg" alt="Soybean Medium" onerror="this.src='https://placehold.co/400x300?text=Soybean'"></div>
+          <div class="product-info"><h3>Soybean Protein Pack</h3><p class="product-desc">Clean, sorted, ready-to-cook — rich in amino acids.</p><div class="price">₦8,000 <small>/ 700g</small></div><a href="#" class="btn-wa-small" data-product="Soybean Protein Pack" data-price="₦8,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
+        </div>
+        <div class="product-card reveal">
+          <div class="product-img"><img src="soybeansmall.jpeg" alt="Soybean Small" onerror="this.src='https://placehold.co/400x300?text=Soybean'"></div>
+          <div class="product-info"><h3>Soybean Daily Dose</h3><p class="product-desc">Convenient portion for shakes & soups. 100% natural.</p><div class="price">₦5,000 <small>/ 350g</small></div><a href="#" class="btn-wa-small" data-product="Soybean Daily Dose" data-price="₦5,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
       </div>
     </div>
@@ -812,9 +630,9 @@
     <div class="container">
       <div class="section-header reveal"><h2>What <span>Customers</span> Say</h2><p>Real stories from happy homes</p></div>
       <div class="testimonial-grid">
-        <div class="testimonial-card reveal"><p class="testimonial-text">"Tom Brown from Happis Nutri changed my family's breakfast. My kids love it, and I love the energy it gives. 100% pure!"</p><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="avatar"><div><h5>Adaobi N.</h5><p>★★★★★</p></div></div></div>
+        <div class="testimonial-card reveal"><p class="testimonial-text">"Tom Brown from Happis Nutri Foods changed my family's breakfast. My kids love it, and I love the energy it gives. 100% pure!"</p><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="avatar"><div><h5>Adaobi N.</h5><p>★★★★★</p></div></div></div>
         <div class="testimonial-card reveal"><p class="testimonial-text">"The soybean quality is unmatched. Best I’ve bought in Nigeria. Their WhatsApp ordering is super smooth."</p><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="avatar"><div><h5>Michael O.</h5><p>★★★★★</p></div></div></div>
-        <div class="testimonial-card reveal"><p class="testimonial-text">"I recommend Happis Nutri to everyone looking for real organic nutrition. Fast delivery & great support."</p><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/45.jpg" alt="avatar"><div><h5>Grace E.</h5><p>★★★★★</p></div></div></div>
+        <div class="testimonial-card reveal"><p class="testimonial-text">"I recommend Happis Nutri Foods to everyone looking for real organic nutrition. Fast delivery & great support."</p><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/45.jpg" alt="avatar"><div><h5>Grace E.</h5><p>★★★★★</p></div></div></div>
       </div>
     </div>
   </section>
@@ -823,9 +641,9 @@
     <div class="newsletter reveal">
       <h3>Get <span class="glow-text">15% Off</span> First Order</h3>
       <p>Subscribe for health tips & exclusive deals</p>
-      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
-        <input type="email" placeholder="Your email address" required id="newsEmail">
-        <button type="submit">Subscribe →</button>
+      <form class="newsletter-form" onsubmit="handleNewsletter(event)" style="display:flex; gap:0.8rem; flex-wrap:wrap; justify-content:center;">
+        <input type="email" placeholder="Your email address" required id="newsEmail" style="flex:1; min-width:180px; padding:0.9rem 1rem; border-radius:60px; border:none; background:#1E2A1C; color:white;">
+        <button type="submit" style="background:#F5B841; border:none; padding:0 1.5rem; border-radius:60px; font-weight:700;">Subscribe →</button>
       </form>
     </div>
   </div>
@@ -835,52 +653,85 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-logo"><img src="logo.jpeg" alt="logo" style="width:45px; border-radius:14px;"><span class="logo-text" style="font-size:1.2rem;">Happis<span>Nutri</span></span></div>
-        <p style="font-size:0.8rem; margin-top:0.5rem;">Pure, bold nutrition for the modern Nigerian. Organic Tom Brown & Soybeans.</p>
-        <div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="https://wa.me/2349019798281"><i class="fab fa-whatsapp"></i></a></div>
+        <div class="footer-logo" style="display:flex; align-items:center; gap:0.6rem;"><img src="logo.jpeg" alt="logo" style="width:42px; border-radius:14px;"><span class="logo-text" style="font-size:1.2rem;">Happis<span>Nutri</span></span></div>
+        <p style="font-size:0.8rem; margin-top:0.6rem;">Pure, bold nutrition for the modern Nigerian. Organic Tom Brown & Soybeans.</p>
+        <div class="social-links" style="display:flex; gap:1rem; margin-top:1rem;"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="https://wa.me/2349019798281"><i class="fab fa-whatsapp"></i></a></div>
       </div>
-      <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#products">Shop</a></li><li><a href="#testimonials">Reviews</a></li><li><a href="#contact">Contact</a></li></ul></div>
-      <div class="footer-col"><h4>Categories</h4><ul><li><a href="#products">Tom Brown</a></li><li><a href="#products">Soybeans</a></li><li><a href="#products">Superfoods</a></li></ul></div>
+      <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#products">Shop</a></li><li><a href="#testimonials">Reviews</a></li></ul></div>
+      <div class="footer-col"><h4>Categories</h4><ul><li><a href="#products">Tom Brown</a></li><li><a href="#products">Soybeans</a></li></ul></div>
       <div class="footer-col"><h4>Contact</h4><div class="contact-item"><i class="fas fa-phone-alt"></i><a href="tel:+2349019798281">+234 901 979 8281</a></div><div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:happinutrifoods@gmail.com">happinutrifoods@gmail.com</a></div><div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Port Harcourt, Nigeria</span></div><div class="contact-item"><i class="fas fa-globe"></i><a href="https://happisnutrifoods.name.ng" target="_blank">happisnutrifoods.name.ng</a></div></div>
     </div>
-    <div class="footer-bottom"><p>© 2025 Happis Nutri Foods — Bold Nutrition, Pure Goodness</p><p>Developed by <a href="https://wa.me/2348132084092" style="color:#F5B841;">Esau De Genius</a></p></div>
+    <div class="footer-bottom" style="border-top:1px solid #2A352A; margin-top:2rem; padding-top:1.5rem; display:flex; justify-content:space-between; flex-wrap:wrap; font-size:0.7rem;"><p>© 2025 Happis Nutri Foods — Bold Nutrition, Pure Goodness</p><p>Developed by <a href="https://wa.me/2348132084092" style="color:#F5B841;">Esau De Genius</a></p></div>
   </div>
 </footer>
 
-<div class="whatsapp-float"><a href="https://wa.me/2349019798281?text=Hello%20Happis%20Nutri!%20I%20want%20to%20order%20healthy%20products" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+<div class="whatsapp-float"><a href="https://wa.me/2349019798281?text=Hello%20Happis%20Nutri%20Foods!%20I%20want%20to%20order%20healthy%20products" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
 <div class="back-to-top"><i class="fas fa-arrow-up"></i></div>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // Back to top
     const btt = document.querySelector('.back-to-top');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 400) btt.style.opacity = '1';
       else btt.style.opacity = '0';
     });
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
     const phone = '2349019798281';
+    // WhatsApp order buttons
     document.querySelectorAll('.btn-wa-small').forEach(btn => {
       btn.addEventListener('click', function(e) {
         e.preventDefault();
         const product = this.dataset.product;
         const price = this.dataset.price;
         const name = prompt('Enter your full name:');
-        if (name) {
-          const msg = `Hello Happis Nutri Foods!%0A%0AName: ${encodeURIComponent(name)}%0AProduct: ${encodeURIComponent(product)}%0APrice: ${encodeURIComponent(price)}%0A%0APlease confirm availability & delivery.`;
+        if (name && name.trim()) {
+          const msg = `Hello Happis Nutri Foods!%0A%0AName: ${encodeURIComponent(name.trim())}%0AProduct: ${encodeURIComponent(product)}%0APrice: ${encodeURIComponent(price)}%0A%0APlease confirm availability & delivery.`;
           window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+        } else if (name === "") {
+          alert("Please enter your name to proceed.");
         }
       });
     });
+
+    // Intersection Observer
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     reveals.forEach(r => observer.observe(r));
+
+    // Video Modal Logic
+    const modal = document.getElementById('videoModal');
+    const watchBtn = document.getElementById('watchVideoBtn');
+    const closeBtn = document.getElementById('closeVideoBtn');
+    const videoIframe = document.getElementById('welcomeVideo');
+
+    // Welcome Video (brand story - replace with actual Happis Nutri intro if needed)
+    watchBtn.addEventListener('click', () => {
+      modal.classList.add('active');
+      // optional autoplay: set src with autoplay=1
+      videoIframe.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=0";
+    });
+    function closeModal() {
+      modal.classList.remove('active');
+      videoIframe.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0";
+    }
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
   });
+
   function handleNewsletter(event) {
     event.preventDefault();
     const email = document.getElementById('newsEmail').value;
-    if (email) window.open(`https://wa.me/2349019798281?text=Hello! I'd like to subscribe to Happis Nutri newsletter. My email: ${email}`, '_blank');
+    if (email && email.includes('@')) {
+      window.open(`https://wa.me/2349019798281?text=Hello! I'd like to subscribe to Happis Nutri Foods newsletter. My email: ${encodeURIComponent(email)}`, '_blank');
+    } else {
+      alert("Please enter a valid email address.");
+    }
   }
 </script>
 </body>
