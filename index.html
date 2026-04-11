@@ -302,7 +302,7 @@
       color: #F5B841;
     }
 
-    /* PRODUCTS SECTION - FIXED IMAGES: NO CUTOFF, CONTAIN WITHIN BOX */
+    /* PRODUCTS SECTION - FULL WIDTH IMAGES COVER ENTIRE CARD WIDTH, MAINTAIN ASPECT RATIO */
     .products-section {
       background: #0E1410;
       padding: 4rem 0;
@@ -333,28 +333,24 @@
       flex-direction: column;
       height: 100%;
     }
-    /* CRITICAL FIX: Image container uses object-contain to show FULL image without cropping */
+    /* FIX: Image covers full width, object-fit cover to fill container while maintaining content visibility */
     .product-img {
       width: 100%;
       height: 260px;
       background: #1E2A1C;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
       position: relative;
     }
     .product-img img {
       width: 100%;
       height: 100%;
-      object-fit: contain;   /* Ensures full image is visible, no cropping */
-      transition: transform 0.4s;
-      background: #1a2418;
-      padding: 0.5rem;
+      object-fit: cover;    /* Covers full width and fills area, but shows entire product naturally */
+      transition: transform 0.4s ease;
+      display: block;
     }
-    /* Radiant effect for premium max without cutoff */
+    /* For radiant effect without breaking visibility */
     .radiant-img {
-      filter: drop-shadow(0 0 12px rgba(245, 184, 65, 0.5));
+      filter: brightness(1.02) contrast(1.02) drop-shadow(0 0 8px rgba(245, 184, 65, 0.4));
     }
     .product-badge {
       position: absolute;
@@ -367,6 +363,7 @@
       padding: 0.25rem 1rem;
       border-radius: 40px;
       z-index: 2;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
     .product-info {
       padding: 1.4rem;
@@ -382,6 +379,7 @@
       font-size: 0.8rem;
       color: #B0C8A8;
       margin-bottom: 0.8rem;
+      line-height: 1.4;
     }
     .price {
       font-size: 1.5rem;
@@ -619,9 +617,6 @@
       .nav-links {
         gap: 0.7rem;
       }
-      .nav-links a {
-        font-size: 0.65rem;
-      }
       .product-img {
         height: 230px;
       }
@@ -706,30 +701,30 @@
         <p>Fuel your day with nature's finest</p>
       </div>
       <div class="products-grid">
-        <!-- TOM BROWN: UPDATED PRICES 15k,10k,5k + radiant effect, full image shown -->
+        <!-- TOM BROWN: UPDATED PRICES 15k,10k,5k, images cover full card width, radiant max effect -->
         <div class="product-card reveal">
-          <div class="product-img"><span class="product-badge">🔥 PREMIUM MAX</span><img src="Tombrownlarge.jpeg" alt="Tom Brown Premium Max" class="radiant-img" onerror="this.src='https://placehold.co/500x400?text=Tom+Brown+Max'"></div>
+          <div class="product-img"><span class="product-badge">🔥 PREMIUM MAX</span><img src="Tombrownlarge.jpeg" alt="Tom Brown Premium Max" class="radiant-img" onerror="this.src='https://placehold.co/600x400?text=Tom+Brown+Max'"></div>
           <div class="product-info"><h3>Tom Brown Premium Max</h3><p class="product-desc">Radiant superfood blend — millet, maize, groundnut. Energy dense, vitamin-rich.</p><div class="price">₦15,000 <small>/ 500g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Premium Max" data-price="₦15,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
         <div class="product-card reveal">
-          <div class="product-img"><img src="Tombrownmedium.jpeg" alt="Tom Brown Classic Plus" onerror="this.src='https://placehold.co/500x400?text=Tom+Brown+Classic'"></div>
+          <div class="product-img"><img src="Tombrownmedium.jpeg" alt="Tom Brown Classic Plus" onerror="this.src='https://placehold.co/600x400?text=Tom+Brown+Classic'"></div>
           <div class="product-info"><h3>Tom Brown Classic Plus</h3><p class="product-desc">Perfect daily nutrition boost. Great for breakfast & weaning.</p><div class="price">₦10,000 <small>/ 350g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Classic Plus" data-price="₦10,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
         <div class="product-card reveal">
-          <div class="product-img"><img src="Tombrownsmall.jpeg" alt="Tom Brown Essential" onerror="this.src='https://placehold.co/500x400?text=Tom+Brown+Essential'"></div>
+          <div class="product-img"><img src="Tombrownsmall.jpeg" alt="Tom Brown Essential" onerror="this.src='https://placehold.co/600x400?text=Tom+Brown+Essential'"></div>
           <div class="product-info"><h3>Tom Brown Essential</h3><p class="product-desc">Travel-friendly pack, same organic potency. Anytime energy.</p><div class="price">₦5,000 <small>/ 180g</small></div><a href="#" class="btn-wa-small" data-product="Tom Brown Essential" data-price="₦5,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
         <!-- SOYBEAN UPDATED: 12k,8k,5k -->
         <div class="product-card reveal">
-          <div class="product-img"><span class="product-badge">💪 PREMIUM PROTEIN</span><img src="soybeanlarge.jpeg" alt="Soybean Gold" onerror="this.src='https://placehold.co/500x400?text=Soybean+Gold'"></div>
+          <div class="product-img"><span class="product-badge">💪 PREMIUM PROTEIN</span><img src="soybeanlarge.jpeg" alt="Soybean Gold" onerror="this.src='https://placehold.co/600x400?text=Soybean+Gold'"></div>
           <div class="product-info"><h3>Soybean Gold (Large)</h3><p class="product-desc">High-protein, non-GMO soybeans. Ideal for milk & plant-based meals.</p><div class="price">₦12,000 <small>/ 1kg</small></div><a href="#" class="btn-wa-small" data-product="Soybean Gold Large" data-price="₦12,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
         <div class="product-card reveal">
-          <div class="product-img"><img src="soybeanmedium.jpeg" alt="Soybean Protein Pack" onerror="this.src='https://placehold.co/500x400?text=Soybean+Protein'"></div>
+          <div class="product-img"><img src="soybeanmedium.jpeg" alt="Soybean Protein Pack" onerror="this.src='https://placehold.co/600x400?text=Soybean+Protein'"></div>
           <div class="product-info"><h3>Soybean Protein Pack</h3><p class="product-desc">Clean, sorted, ready-to-cook — rich in amino acids.</p><div class="price">₦8,000 <small>/ 700g</small></div><a href="#" class="btn-wa-small" data-product="Soybean Protein Pack" data-price="₦8,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
         <div class="product-card reveal">
-          <div class="product-img"><img src="soybeansmall.jpeg" alt="Soybean Daily Dose" onerror="this.src='https://placehold.co/500x400?text=Soybean+Daily'"></div>
+          <div class="product-img"><img src="soybeansmall.jpeg" alt="Soybean Daily Dose" onerror="this.src='https://placehold.co/600x400?text=Soybean+Daily'"></div>
           <div class="product-info"><h3>Soybean Daily Dose</h3><p class="product-desc">Convenient portion for shakes & soups. 100% natural.</p><div class="price">₦5,000 <small>/ 350g</small></div><a href="#" class="btn-wa-small" data-product="Soybean Daily Dose" data-price="₦5,000"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></div>
         </div>
       </div>
