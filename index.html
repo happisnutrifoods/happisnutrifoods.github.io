@@ -130,18 +130,15 @@
       white-space: nowrap;
     }
 
-    `/* HERO SECTION - FULL COVERAGE VIDEO BACKGROUND */
+/* HERO SECTION - FULL COVERAGE VIDEO BACKGROUND */
 .hero {
   position: relative;
   min-height: 100vh;
   width: 100%;
   display: flex;
-
-  align-items: flex-start; /* prevents content cut-off */
-  justify-content: center;
-
+  align-items: center;
   overflow: hidden;
-  padding: 7rem 0 4rem;
+  padding: 5rem 0 4rem;
 }
 
 /* VIDEO WRAPPER */
@@ -152,14 +149,14 @@
   overflow: hidden;
 }
 
-/* IFRAME VIDEO (DESKTOP) */
+/* FIXED IFRAME (COVER BEHAVIOR) */
 .hero-video-wrapper iframe {
   position: absolute;
-  top: 48%; /* slight upward shift */
+  top: 48%; /* slightly higher to reduce bottom */
   left: 50%;
 
   width: 100vw;
-  height: 56.25vw; /* 16:9 */
+  height: 56.25vw; /* 16:9 ratio */
 
   min-width: 177.77vh;
   min-height: 100vh;
@@ -169,7 +166,7 @@
   border: 0;
 }
 
-/* OVERLAY (improves readability) */
+/* OPTIONAL OVERLAY (improves text visibility) */
 .hero::before {
   content: "";
   position: absolute;
@@ -182,7 +179,6 @@
 .hero .container {
   position: relative;
   z-index: 2;
-  width: 100%;
 }
 
 /* GRID */
@@ -239,38 +235,6 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-}
-
-/* =========================
-   📱 MOBILE OPTIMIZATION
-   ========================= */
-@media (max-width: 768px) {
-
-  .hero {
-    min-height: auto; /* prevents cropping */
-    padding: 6rem 0 3rem;
-  }
-
-  /* MOBILE VIDEO FIX */
-  .hero-video-wrapper iframe {
-    top: 50%;
-
-    width: 177.77vw; /* switch scaling */
-    height: 100vh;
-
-    min-width: 100%;
-    min-height: 100%;
-
-    transform: translate(-50%, -50%);
-  }
-
-  .hero-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero p {
-    max-width: 100%;
-  }
 }
 
     .btn-primary {
