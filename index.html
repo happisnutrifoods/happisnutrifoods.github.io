@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Happis Nutri Foods — Premium natural nutrition. Organic Tom Brown, premium Soybeans, and wholesome superfoods. Order directly via WhatsApp for nationwide delivery.">
-  <title>Happis Nutri Foods — Bold Nutrition, Pure Goodness</title>
+  <meta name="description" content="Happi's Nutri Food — Premium natural nutrition. Organic Tom Brown, premium Soybeans, and wholesome superfoods. Order directly via WhatsApp for nationwide delivery.">
+  <title>Happi's Nutri Food — Bold Nutrition, Pure Goodness</title>
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="https://happisnutrifoods.name.ng/logo.jpeg">
   <link rel="apple-touch-icon" href="https://happisnutrifoods.name.ng/logo.jpeg">
@@ -337,6 +337,16 @@
       white-space: nowrap;
     }
 
+    /* Hide order button on mobile */
+    @media (max-width: 768px) {
+      .btn-wa {
+        display: none;
+      }
+      .nav-inner {
+        justify-content: space-between;
+      }
+    }
+
     /* HERO SECTION */
     .hero {
       position: relative;
@@ -363,10 +373,8 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 100vw;
-      height: 56.25vw;
-      min-height: 100vh;
-      min-width: 177.77vh;
+      width: 120vw;
+      height: 120vh;
       transform: translate(-50%, -50%);
       pointer-events: none;
       border: 0;
@@ -845,10 +853,10 @@
   <div class="story-modal">
     <button class="close-story" id="closeStoryBtn">&times;</button>
     <div class="story-header">
-      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23F5B841'/%3E%3Ccircle cx='50' cy='40' r='15' fill='%230A0F0D'/%3E%3Cpath d='M20 70 Q50 85 80 70' stroke='%230A0F0D' stroke-width='4' fill='none'/%3E%3C/svg%3E" alt="Happy Amos - Founder" class="owner-img" id="ownerImage">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23F5B841'/%3E%3Ccircle cx='50' cy='40' r='15' fill='%230A0F0D'/%3E%3Cpath d='M20 70 Q50 85 80 70' stroke='%230A0F0D' stroke-width='4' fill='none'/%3E%3Ctext x='50' y='92' text-anchor='middle' fill='%230A0F0D' font-size='10' font-weight='bold'%3EMIRACLE%3C/text%3E%3C/svg%3E" alt="Ituma Miracle Happiness - Founder" class="owner-img" id="ownerImage">
       <div class="owner-info">
-        <h3>Happy Amos</h3>
-        <p>Founder & CEO, Happis Nutri Foods</p>
+        <h3>Ituma Miracle Happiness</h3>
+        <p>Founder & CEO, Happi's Nutri Food</p>
         <p style="font-size:0.75rem; margin-top:0.3rem;"><i class="fas fa-map-marker-alt"></i> Port Harcourt, Nigeria</p>
       </div>
     </div>
@@ -858,17 +866,17 @@
       </div>
       
       <h4><i class="fas fa-seedling" style="margin-right:0.5rem;"></i> Our Roots</h4>
-      <p>Happis Nutri Foods was born from a deep passion for authentic African nutrition. Growing up in Port Harcourt, Happy Amos witnessed how modern processed foods were replacing the wholesome, nutrient-dense meals of our ancestors. She knew something had to change.</p>
+      <p>Happi's Nutri Food was born from a deep passion for authentic African nutrition. Growing up in Port Harcourt, Ituma Miracle Happiness witnessed how modern processed foods were replacing the wholesome, nutrient-dense meals of our ancestors. She knew something had to change.</p>
       
       <h4><i class="fas fa-heart" style="margin-right:0.5rem;"></i> The Vision</h4>
-      <p>Happy envisioned a brand that would reconnect Nigerians with the power of organic, locally-sourced superfoods. Starting with Tom Brown — the legendary energy porridge — and premium non-GMO soybeans, Happis Nutri Foods quickly became synonymous with quality, purity, and trust.</p>
+      <p>Miracle envisioned a brand that would reconnect Nigerians with the power of organic, locally-sourced superfoods. Starting with Tom Brown — the legendary energy porridge — and premium non-GMO soybeans, Happi's Nutri Food quickly became synonymous with quality, purity, and trust.</p>
       
       <h4><i class="fas fa-trophy" style="margin-right:0.5rem;"></i> Our Promise</h4>
       <p>Every product we offer is carefully sourced from trusted local farmers, processed without chemicals or additives, and delivered fresh to your doorstep. We believe that good nutrition is the foundation of a vibrant life, and we're committed to making it accessible to everyone.</p>
       
       <div class="story-highlight">
         <i class="fas fa-quote-left" style="margin-right:0.5rem; opacity:0.7;"></i>
-        When you choose Happis Nutri Foods, you're not just buying a product — you're joining a movement towards healthier, stronger Nigerian families.
+        When you choose Happi's Nutri Food, you're not just buying a product — you're joining a movement towards healthier, stronger Nigerian families.
       </div>
       
       <h4><i class="fas fa-bullseye" style="margin-right:0.5rem;"></i> What Drives Us</h4>
@@ -878,7 +886,7 @@
       • Fast, reliable delivery across Nigeria<br>
       • Personalized customer care via WhatsApp</p>
       
-      <p style="margin-top:1rem; text-align:right; color:#F5B841; font-weight:600;">— Happy & The Happis Team 🌿</p>
+      <p style="margin-top:1rem; text-align:right; color:#F5B841; font-weight:600;">— Miracle & The Happi's Team 🌿</p>
     </div>
   </div>
 </div>
@@ -886,8 +894,8 @@
 <nav class="navbar">
   <div class="nav-inner">
     <a href="#" class="logo">
-      <img src="logo.jpeg" alt="Happis Nutri Foods" class="logo-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23F5B841\'/%3E%3Ctext x=\'50\' y=\'68\' font-size=\'50\' text-anchor=\'middle\' fill=\'%230A0F0D\' font-weight=\'bold\'%3EHN%3C/text%3E%3C/svg%3E'">
-      <span class="logo-text">Happi's <span>Nutri </span> Foods</span>
+      <img src="logo.jpeg" alt="Happi's Nutri Food" class="logo-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23F5B841\'/%3E%3Ctext x=\'50\' y=\'68\' font-size=\'50\' text-anchor=\'middle\' fill=\'%230A0F0D\' font-weight=\'bold\'%3EHN%3C/text%3E%3C/svg%3E'">
+      <span class="logo-text">Happi's <span>Nutri </span> Food</span>
     </a>
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
@@ -926,7 +934,7 @@
   <div id="videoModal" class="video-overlay">
     <div class="video-container">
       <button class="close-video" id="closeVideoBtn">✕</button>
-      <iframe id="welcomeVideo" width="100%" height="100%" src="https://www.youtube.com/embed/Evji_ebWZQU?autoplay=0" title="Welcome to Happis Nutri Foods" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe id="welcomeVideo" width="100%" height="100%" src="https://www.youtube.com/embed/Evji_ebWZQU?autoplay=0" title="Welcome to Happi's Nutri Food" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   </div>
 
@@ -1004,28 +1012,28 @@
 <footer id="contact">
   <div class="container">
     <div class="footer-grid">
-      <div><div class="footer-logo"><img src="logo.jpeg" alt="logo" style="width:42px; border-radius:14px;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23F5B841\'/%3E%3Ctext x=\'50\' y=\'68\' font-size=\'46\' text-anchor=\'middle\' fill=\'%230A0F0D\'%3EHN%3C/text%3E%3C/svg%3E'"><span class="logo-text" style="font-size:1.1rem;">Happi's <span> Nutri </span> Foods</span></div><p style="font-size:0.75rem;">Pure, bold nutrition for the modern Nigerian. Organic Tom Brown & Soybeans.</p><div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="https://wa.me/2349019798281"><i class="fab fa-whatsapp"></i></a></div></div>
+      <div><div class="footer-logo"><img src="logo.jpeg" alt="logo" style="width:42px; border-radius:14px;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23F5B841\'/%3E%3Ctext x=\'50\' y=\'68\' font-size=\'46\' text-anchor=\'middle\' fill=\'%230A0F0D\'%3EHN%3C/text%3E%3C/svg%3E'"><span class="logo-text" style="font-size:1.1rem;">Happi's <span> Nutri </span> Food</span></div><p style="font-size:0.75rem;">Pure, bold nutrition for the modern Nigerian. Organic Tom Brown & Soybeans.</p><div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="https://wa.me/2349019798281"><i class="fab fa-whatsapp"></i></a></div></div>
       <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#products">Shop</a></li><li><a href="#testimonials">Reviews</a></li></ul></div>
       <div class="footer-col"><h4>Categories</h4><ul><li><a href="#products">Tom Brown</a></li><li><a href="#products">Soybeans</a></li></ul></div>
       <div class="footer-col"><h4>Contact</h4><div class="contact-item"><i class="fas fa-phone-alt"></i><a href="tel:+2349019798281">+234 901 979 8281</a></div><div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:happinutrifoods@gmail.com">happinutrifoods@gmail.com</a></div><div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Port Harcourt, Nigeria</span></div><div class="contact-item"><i class="fas fa-check-circle"></i><span>Verified Business</span></div></div>
     </div>
-    <div class="footer-bottom"><p>© 2026 Happi's Nutri Foods</p><p>Developed by <a href="https://wa.me/2348132084092" style="color:#F5B841;">Esau De Genius</a></p></div>
+    <div class="footer-bottom"><p>© 2026 Happi's Nutri Food</p><p>Developed by <a href="https://wa.me/2348132084092" style="color:#F5B841;">Esau De Genius</a></p></div>
   </div>
 </footer>
 
-<div class="whatsapp-float"><a href="https://wa.me/2349019798281?text=Hello%20Happi's%20Nutri%20Foods!%20I%20want%20to%20order" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+<div class="whatsapp-float"><a href="https://wa.me/2349019798281?text=Hello%20Happi's%20Nutri%20Food!%20I%20want%20to%20order" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
 <div class="back-to-top"><i class="fas fa-arrow-up"></i></div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
   // Nigerian testimonials
   const testimonials = [
-    { name: "Amina B.", location: "Kano, Nigeria", text: "Tom Brown from Happis Nutri Foods is the best I've ever tasted. My children love it! Pure and healthy.", rating: 5 },
+    { name: "Amina B.", location: "Kano, Nigeria", text: "Tom Brown from Happi's Nutri Food is the best I've ever tasted. My children love it! Pure and healthy.", rating: 5 },
     { name: "Chidi E.", location: "Enugu, Nigeria", text: "Soybean quality is top-notch. I make the creamiest milk. Fast delivery to the East.", rating: 5 },
-    { name: "Tunde A.", location: "Lagos, Nigeria", text: "I recommend Happis to everyone. Organic and affordable. My energy levels are through the roof.", rating: 5 },
+    { name: "Tunde A.", location: "Lagos, Nigeria", text: "I recommend Happi's to everyone. Organic and affordable. My energy levels are through the roof.", rating: 5 },
     { name: "Fatima Z.", location: "Kaduna, Nigeria", text: "Excellent customer service. The Tom Brown Premium Max is a family favorite.", rating: 5 },
-    { name: "Emeka O.", location: "Anambra, Nigeria", text: "No regrets! The soybean gold is perfect for my fitness diet. Thank you Happis.", rating: 5 },
-    { name: "Rukayat S.", location: "Ilorin, Nigeria", text: "I've tried many brands, Happis Nutri Foods is the real deal. 100% natural goodness.", rating: 5 },
+    { name: "Emeka O.", location: "Anambra, Nigeria", text: "No regrets! The soybean gold is perfect for my fitness diet. Thank you Happi's.", rating: 5 },
+    { name: "Rukayat S.", location: "Ilorin, Nigeria", text: "I've tried many brands, Happi's Nutri Food is the real deal. 100% natural goodness.", rating: 5 },
     { name: "Bello M.", location: "Abuja, Nigeria", text: "Delivery was swift. The packaging is premium and the product is fresh.", rating: 5 },
     { name: "Ngozi U.", location: "Imo, Nigeria", text: "My mum loves the Tom Brown. It reminds her of the village taste but cleaner.", rating: 5 },
     { name: "Yusuf I.", location: "Sokoto, Nigeria", text: "I've been using their soybeans for months. Very clean, no stones. Highly recommended.", rating: 5 },
@@ -1036,16 +1044,16 @@
     { name: "Sani G.", location: "Gombe, Nigeria", text: "Alhamdulillah, I found a reliable source for organic soybeans. Great for my farm produce business.", rating: 5 },
     { name: "Chioma A.", location: "Abia, Nigeria", text: "I love that it's chemical-free. My skin and body feel the difference.", rating: 5 },
     { name: "Danjuma K.", location: "Taraba, Nigeria", text: "The Soybean Daily Dose is perfect for my travels. Very convenient.", rating: 5 },
-    { name: "Esther O.", location: "Ondo, Nigeria", text: "Happis Nutri Foods is a blessing. Affordable, healthy, and delicious.", rating: 5 },
+    { name: "Esther O.", location: "Ondo, Nigeria", text: "Happi's Nutri Food is a blessing. Affordable, healthy, and delicious.", rating: 5 },
     { name: "Ibrahim T.", location: "Yobe, Nigeria", text: "I ordered for my family in Damaturu, delivery came through without issues.", rating: 5 },
     { name: "Joy U.", location: "Cross River, Nigeria", text: "The aroma of the Tom Brown is heavenly. Tastes like pure wellness.", rating: 5 },
     { name: "Usman D.", location: "Niger, Nigeria", text: "I recommend the Soybean Gold. High protein, low fat, just what I needed.", rating: 5 },
     { name: "Ifeanyi M.", location: "Ebonyi, Nigeria", text: "I've referred all my friends. Best decision I made for my health.", rating: 5 },
-    { name: "Zainab A.", location: "Jigawa, Nigeria", text: "My family loves the Tom Brown. We've switched completely to Happis.", rating: 5 },
+    { name: "Zainab A.", location: "Jigawa, Nigeria", text: "My family loves the Tom Brown. We've switched completely to Happi's.", rating: 5 },
     { name: "Femi K.", location: "Ekiti, Nigeria", text: "Quality speaks for itself. The packaging is also very attractive.", rating: 5 },
     { name: "Hadiza B.", location: "Borno, Nigeria", text: "I'm happy with the fast response and the quality of the soybeans.", rating: 5 },
     { name: "Obinna N.", location: "Benue, Nigeria", text: "The food basket of the nation approves! Great products.", rating: 5 },
-    { name: "Adesua E.", location: "Edo, Nigeria", text: "Finally a brand that cares about what we consume. Thank you Happis.", rating: 5 },
+    { name: "Adesua E.", location: "Edo, Nigeria", text: "Finally a brand that cares about what we consume. Thank you Happi's.", rating: 5 },
     { name: "Musa W.", location: "Zamfara, Nigeria", text: "Very good customer relations. I will keep ordering.", rating: 5 },
     { name: "Patience J.", location: "Bayelsa, Nigeria", text: "I got my delivery in Yenagoa. Smooth transaction. Great taste.", rating: 5 }
   ];
@@ -1109,7 +1117,7 @@
     function proceedToWhatsApp(name) {
       if (!currentProductData) return;
       const { product, price } = currentProductData;
-      const msg = `Hello Happi's Nutri Foods!%0A%0AName: ${encodeURIComponent(name.trim())}%0AProduct: ${encodeURIComponent(product)}%0APrice: ${encodeURIComponent(price)}%0A%0APlease confirm availability & delivery.`;
+      const msg = `Hello Happi's Nutri Food!%0A%0AName: ${encodeURIComponent(name.trim())}%0AProduct: ${encodeURIComponent(product)}%0APrice: ${encodeURIComponent(price)}%0A%0APlease confirm availability & delivery.`;
       window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
       closeNameModal();
     }
@@ -1190,19 +1198,13 @@
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     reveals.forEach(r => observer.observe(r));
-
-    // Owner image fallback
-    const ownerImg = document.getElementById('ownerImage');
-    ownerImg.onerror = function() {
-      this.src = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%23F5B841\'/%3E%3Ccircle cx=\'50\' cy=\'40\' r=\'15\' fill=\'%230A0F0D\'/%3E%3Cpath d=\'M20 70 Q50 85 80 70\' stroke=\'%230A0F0D\' stroke-width=\'4\' fill=\'none\'/%3E%3Ctext x=\'50\' y=\'92\' text-anchor=\'middle\' fill=\'%230A0F0D\' font-size=\'10\' font-weight=\'bold\'%3EHAPPY%3C/text%3E%3C/svg%3E';
-    };
   });
 
   function handleNewsletter(event) {
     event.preventDefault();
     const email = document.getElementById('newsEmail').value;
     if (email && email.includes('@')) {
-      window.open(`https://wa.me/2349019798281?text=Hello! I'd like to subscribe to Happi's Nutri Foods newsletter. My email: ${encodeURIComponent(email)}`, '_blank');
+      window.open(`https://wa.me/2349019798281?text=Hello! I'd like to subscribe to Happi's Nutri Food newsletter. My email: ${encodeURIComponent(email)}`, '_blank');
     } else alert("Valid email required.");
   }
   window.handleNewsletter = handleNewsletter;
