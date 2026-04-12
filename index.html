@@ -728,34 +728,43 @@
     opacity: 0;
   }
 }
-    /* Base */
-.bac.back-to-top {
+    /* Back to Top Button */
+.back-to-top {
   position: fixed;
   bottom: 5rem;
   right: 1.2rem;
-  width: 40px;
-  height: 40px;
-  background: #F5B841;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #F5B841, #ffcc66);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #0A0F0D;
-  z-index: 999;
-
-  /* Smooth effects */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
   transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(245,184,65,0.4);
+  color: #0A0F0D;
+  font-size: 1.4rem;
+  box-shadow: 0 6px 18px rgba(245,184,65,0.4);
+  z-index: 999;
 }
 
-/* Lift on hover */
+/* Show when scrolling */
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Hover effect */
 .back-to-top:hover {
-  transform: translateY(-6px) scale(1.1);
-  box-shadow: 0 10px 25px rgba(245,184,65,0.7);
+  transform: translateY(-6px) scale(1.08);
+  box-shadow: 0 12px 28px rgba(245,184,65,0.7);
 }
 
-/* Soft pulse glow */
+/* Pulse glow */
 .back-to-top::before {
   content: "";
   position: absolute;
@@ -768,9 +777,8 @@
 }
 
 /* Arrow bounce */
-.back-to-top i,
 .back-to-top span {
-  animation: bounce 1.4s infinite;
+  animation: bounce 1.5s infinite;
 }
 
 /* Animations */
@@ -780,7 +788,7 @@
     opacity: 0.6;
   }
   70% {
-    transform: scale(1.4);
+    transform: scale(1.5);
     opacity: 0;
   }
   100% {
