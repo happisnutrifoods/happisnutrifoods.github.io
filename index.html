@@ -729,44 +729,33 @@
   }
 }
     /* Base */
-.back-to-top {
+.bac.back-to-top {
   position: fixed;
   bottom: 5rem;
   right: 1.2rem;
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(135deg, #F5B841, #ffcc66);
+  width: 40px;
+  height: 40px;
+  background: #F5B841;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  transition: all 0.3s ease;
   color: #0A0F0D;
-  font-size: 1.2rem;
-  box-shadow: 0 6px 18px rgba(245,184,65,0.4);
   z-index: 999;
-  text-decoration: none;
-  position: fixed;
+
+  /* Smooth effects */
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(245,184,65,0.4);
 }
 
-/* Show when active */
-.back-to-top.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-/* Hover effect */
+/* Lift on hover */
 .back-to-top:hover {
-  transform: translateY(-5px) scale(1.08);
+  transform: translateY(-6px) scale(1.1);
   box-shadow: 0 10px 25px rgba(245,184,65,0.7);
 }
 
-/* Pulse glow */
+/* Soft pulse glow */
 .back-to-top::before {
   content: "";
   position: absolute;
@@ -774,23 +763,24 @@
   height: 100%;
   border-radius: 50%;
   background: rgba(245,184,65,0.4);
-  animation: pulseTop 2s infinite;
+  animation: pulse 2s infinite;
   z-index: -1;
 }
 
 /* Arrow bounce */
-.back-to-top i {
-  animation: bounce 1.5s infinite;
+.back-to-top i,
+.back-to-top span {
+  animation: bounce 1.4s infinite;
 }
 
-/* Pulse animation */
-@keyframes pulseTop {
+/* Animations */
+@keyframes pulse {
   0% {
     transform: scale(1);
     opacity: 0.6;
   }
   70% {
-    transform: scale(1.5);
+    transform: scale(1.4);
     opacity: 0;
   }
   100% {
@@ -798,7 +788,6 @@
   }
 }
 
-/* Arrow bounce */
 @keyframes bounce {
   0%, 100% {
     transform: translateY(0);
