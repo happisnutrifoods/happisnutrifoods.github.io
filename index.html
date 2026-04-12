@@ -607,7 +607,6 @@
       font-weight: 700;
       cursor: pointer;
     }
-
     /* FOOTER */
     footer {
       background: #060907;
@@ -728,40 +727,36 @@
     opacity: 0;
   }
 }
-    /* Back to Top Button */
-.back-to-top {
+    .back-to-top {
   position: fixed;
   bottom: 5rem;
   right: 1.2rem;
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #F5B841, #ffcc66);
+  width: 40px;
+  height: 40px;
+  background: #F5B841;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
   transition: all 0.3s ease;
   color: #0A0F0D;
-  font-size: 1.4rem;
-  box-shadow: 0 6px 18px rgba(245,184,65,0.4);
   z-index: 999;
+
+  /* Added */
+  box-shadow: 0 5px 15px rgba(245,184,65,0.4);
 }
 
-/* Show when scrolling */
+/* When your existing JS sets opacity to 1 */
 .back-to-top.show {
   opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
 }
 
-/* Hover effect */
+/* Hover lift */
 .back-to-top:hover {
-  transform: translateY(-6px) scale(1.08);
-  box-shadow: 0 12px 28px rgba(245,184,65,0.7);
+  transform: translateY(-6px) scale(1.1);
+  box-shadow: 0 10px 25px rgba(245,184,65,0.7);
 }
 
 /* Pulse glow */
@@ -777,8 +772,9 @@
 }
 
 /* Arrow bounce */
+.back-to-top i,
 .back-to-top span {
-  animation: bounce 1.5s infinite;
+  animation: bounce 1.4s infinite;
 }
 
 /* Animations */
@@ -788,7 +784,7 @@
     opacity: 0.6;
   }
   70% {
-    transform: scale(1.5);
+    transform: scale(1.4);
     opacity: 0;
   }
   100% {
