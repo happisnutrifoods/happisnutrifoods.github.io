@@ -50,7 +50,7 @@
     }
     
     /* Custom Modal Styles */
-    .name-modal-overlay {
+    .name-modal-overlay, .story-modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
@@ -66,7 +66,7 @@
       opacity: 0;
       transition: all 0.3s ease;
     }
-    .name-modal-overlay.active {
+    .name-modal-overlay.active, .story-modal-overlay.active {
       visibility: visible;
       opacity: 1;
     }
@@ -82,9 +82,121 @@
       transform: scale(0.9);
       transition: transform 0.3s ease;
     }
-    .name-modal-overlay.active .name-modal {
+    .story-modal {
+      background: linear-gradient(145deg, #151F18, #0E1410);
+      border: 2px solid #F5B841;
+      border-radius: 32px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 600px;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+    .name-modal-overlay.active .name-modal,
+    .story-modal-overlay.active .story-modal {
       transform: scale(1);
     }
+    .story-modal::-webkit-scrollbar {
+      width: 6px;
+    }
+    .story-modal::-webkit-scrollbar-track {
+      background: #1A2418;
+      border-radius: 10px;
+    }
+    .story-modal::-webkit-scrollbar-thumb {
+      background: #F5B841;
+      border-radius: 10px;
+    }
+    .story-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .owner-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid #F5B841;
+      object-fit: cover;
+      box-shadow: 0 4px 15px rgba(245, 184, 65, 0.3);
+    }
+    .owner-info h3 {
+      font-size: 1.4rem;
+      color: #F5B841;
+      margin-bottom: 0.2rem;
+    }
+    .owner-info p {
+      color: #B0C8A8;
+      font-size: 0.85rem;
+    }
+    .story-content {
+      color: #E9EFE7;
+    }
+    .story-content h4 {
+      color: #F5B841;
+      margin: 1.2rem 0 0.5rem;
+      font-size: 1.1rem;
+    }
+    .story-content p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+      font-size: 0.9rem;
+    }
+    .story-highlight {
+      background: rgba(245, 184, 65, 0.1);
+      border-left: 3px solid #F5B841;
+      padding: 0.8rem 1.2rem;
+      border-radius: 12px;
+      margin: 1rem 0;
+      font-style: italic;
+    }
+    .close-story {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      color: #B0C8A8;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.2s;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    .close-story:hover {
+      color: #F5B841;
+      background: rgba(245, 184, 65, 0.1);
+    }
+    .story-modal {
+      position: relative;
+    }
+    .our-story-btn {
+      background: transparent;
+      border: 1px solid #F5B841;
+      color: #F5B841;
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: 0.5rem;
+    }
+    .our-story-btn:hover {
+      background: rgba(245, 184, 65, 0.1);
+    }
+
     .name-modal i {
       font-size: 3rem;
       color: #F5B841;
@@ -225,7 +337,7 @@
       white-space: nowrap;
     }
 
-    /* HERO SECTION - PROPERLY ADJUSTED */
+    /* HERO SECTION */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -237,7 +349,6 @@
       padding: 5rem 0 4rem;
     }
 
-    /* VIDEO WRAPPER */
     .hero-video-wrapper {
       position: absolute;
       top: 0;
@@ -248,36 +359,33 @@
       overflow: hidden;
     }
 
-    /* YOUTUBE IFRAME BACKGROUND - OBJECT FIT COVER SIMULATION */
     .hero-video-wrapper iframe {
       position: absolute;
       top: 50%;
       left: 50%;
       width: 100vw;
-      height: 56.25vw; /* 16:9 aspect ratio */
+      height: 56.25vw;
       min-height: 100vh;
-      min-width: 177.77vh; /* 16:9 aspect ratio */
+      min-width: 177.77vh;
       transform: translate(-50%, -50%);
       pointer-events: none;
       border: 0;
     }
 
-    /* For browsers that don't support vh/vw well, fallback */
     @media (max-aspect-ratio: 16/9) {
       .hero-video-wrapper iframe {
-        width: 300%;
+        width: 250%;
         left: 100%;
       }
     }
 
     @media (min-aspect-ratio: 16/9) {
       .hero-video-wrapper iframe {
-        height: 300%;
+        height: 250%;
         top: 100%;
       }
     }
 
-    /* DARK OVERLAY */
     .hero::before {
       content: "";
       position: absolute;
@@ -286,14 +394,12 @@
       z-index: 1;
     }
 
-    /* CONTENT ABOVE VIDEO */
     .hero .container {
       position: relative;
       z-index: 2;
       width: 100%;
     }
 
-    /* GRID */
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 0.8fr;
@@ -301,7 +407,6 @@
       align-items: center;
     }
 
-    /* BADGE */
     .hero-badge {
       display: inline-block;
       background: rgba(245, 184, 65, 0.2);
@@ -315,7 +420,6 @@
       margin-bottom: 1.2rem;
     }
 
-    /* HEADING */
     .hero h1 {
       font-size: clamp(2.1rem, 7vw, 4rem);
       font-weight: 700;
@@ -333,7 +437,6 @@
       color: transparent;
     }
 
-    /* TEXT */
     .hero p {
       font-size: clamp(0.9rem, 3.5vw, 1.05rem);
       color: #EAF5E5;
@@ -342,14 +445,12 @@
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     }
 
-    /* BUTTONS */
     .hero-buttons {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
     }
 
-    /* MOBILE ADJUSTMENTS */
     @media (max-width: 768px) {
       .hero {
         min-height: 100vh;
@@ -370,10 +471,8 @@
       }
 
       .hero-video-wrapper iframe {
-        width: 100vw;
-        height: 56.25vw;
-        min-height: 100vh;
-        min-width: 177.77vh;
+        width: 150vw;
+        height: 150vh;
       }
 
       .nav-links {
@@ -381,7 +480,6 @@
       }
     }
 
-    /* Small mobile devices */
     @media (max-width: 480px) {
       .hero h1 {
         font-size: clamp(1.8rem, 8vw, 2.5rem);
@@ -742,6 +840,49 @@
   </div>
 </div>
 
+<!-- Our Story Modal -->
+<div class="story-modal-overlay" id="storyModal">
+  <div class="story-modal">
+    <button class="close-story" id="closeStoryBtn">&times;</button>
+    <div class="story-header">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23F5B841'/%3E%3Ccircle cx='50' cy='40' r='15' fill='%230A0F0D'/%3E%3Cpath d='M20 70 Q50 85 80 70' stroke='%230A0F0D' stroke-width='4' fill='none'/%3E%3C/svg%3E" alt="Happy Amos - Founder" class="owner-img" id="ownerImage">
+      <div class="owner-info">
+        <h3>Happy Amos</h3>
+        <p>Founder & CEO, Happis Nutri Foods</p>
+        <p style="font-size:0.75rem; margin-top:0.3rem;"><i class="fas fa-map-marker-alt"></i> Port Harcourt, Nigeria</p>
+      </div>
+    </div>
+    <div class="story-content">
+      <div class="story-highlight">
+        "Our mission is simple: bring pure, unadulterated African superfoods to every Nigerian home, empowering families with natural strength and vitality."
+      </div>
+      
+      <h4><i class="fas fa-seedling" style="margin-right:0.5rem;"></i> Our Roots</h4>
+      <p>Happis Nutri Foods was born from a deep passion for authentic African nutrition. Growing up in Port Harcourt, Happy Amos witnessed how modern processed foods were replacing the wholesome, nutrient-dense meals of our ancestors. She knew something had to change.</p>
+      
+      <h4><i class="fas fa-heart" style="margin-right:0.5rem;"></i> The Vision</h4>
+      <p>Happy envisioned a brand that would reconnect Nigerians with the power of organic, locally-sourced superfoods. Starting with Tom Brown — the legendary energy porridge — and premium non-GMO soybeans, Happis Nutri Foods quickly became synonymous with quality, purity, and trust.</p>
+      
+      <h4><i class="fas fa-trophy" style="margin-right:0.5rem;"></i> Our Promise</h4>
+      <p>Every product we offer is carefully sourced from trusted local farmers, processed without chemicals or additives, and delivered fresh to your doorstep. We believe that good nutrition is the foundation of a vibrant life, and we're committed to making it accessible to everyone.</p>
+      
+      <div class="story-highlight">
+        <i class="fas fa-quote-left" style="margin-right:0.5rem; opacity:0.7;"></i>
+        When you choose Happis Nutri Foods, you're not just buying a product — you're joining a movement towards healthier, stronger Nigerian families.
+      </div>
+      
+      <h4><i class="fas fa-bullseye" style="margin-right:0.5rem;"></i> What Drives Us</h4>
+      <p>• 100% organic, chemical-free products<br>
+      • Direct partnerships with local farmers<br>
+      • Rigorous quality control at every step<br>
+      • Fast, reliable delivery across Nigeria<br>
+      • Personalized customer care via WhatsApp</p>
+      
+      <p style="margin-top:1rem; text-align:right; color:#F5B841; font-weight:600;">— Happy & The Happis Team 🌿</p>
+    </div>
+  </div>
+</div>
+
 <nav class="navbar">
   <div class="nav-inner">
     <a href="#" class="logo">
@@ -754,7 +895,10 @@
       <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="https://wa.me/2349019798281" class="btn-wa"><i class="fab fa-whatsapp"></i> Order</a>
+    <div style="display:flex; align-items:center;">
+      <button class="our-story-btn" id="ourStoryBtn"><i class="fas fa-book-open"></i> Our Story</button>
+      <a href="https://wa.me/2349019798281" class="btn-wa"><i class="fab fa-whatsapp"></i> Order</a>
+    </div>
   </div>
 </nav>
 
@@ -874,7 +1018,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-  // Nigerian testimonials (36 states representation, no images)
+  // Nigerian testimonials
   const testimonials = [
     { name: "Amina B.", location: "Kano, Nigeria", text: "Tom Brown from Happis Nutri Foods is the best I've ever tasted. My children love it! Pure and healthy.", rating: 5 },
     { name: "Chidi E.", location: "Enugu, Nigeria", text: "Soybean quality is top-notch. I make the creamiest milk. Fast delivery to the East.", rating: 5 },
@@ -943,22 +1087,22 @@
 
     const phone = '2349019798281';
     
-    // Modal elements
-    const modalOverlay = document.getElementById('nameModal');
+    // Name Modal elements
+    const nameModalOverlay = document.getElementById('nameModal');
     const customerNameInput = document.getElementById('customerNameInput');
     const confirmBtn = document.getElementById('confirmNameBtn');
     const cancelBtn = document.getElementById('cancelNameBtn');
     let currentProductData = null;
 
-    function openModal(product, price) {
+    function openNameModal(product, price) {
       currentProductData = { product, price };
       customerNameInput.value = '';
-      modalOverlay.classList.add('active');
+      nameModalOverlay.classList.add('active');
       customerNameInput.focus();
     }
 
-    function closeModal() {
-      modalOverlay.classList.remove('active');
+    function closeNameModal() {
+      nameModalOverlay.classList.remove('active');
       currentProductData = null;
     }
 
@@ -967,7 +1111,7 @@
       const { product, price } = currentProductData;
       const msg = `Hello Happi's Nutri Foods!%0A%0AName: ${encodeURIComponent(name.trim())}%0AProduct: ${encodeURIComponent(product)}%0APrice: ${encodeURIComponent(price)}%0A%0APlease confirm availability & delivery.`;
       window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
-      closeModal();
+      closeNameModal();
     }
 
     document.querySelectorAll('.btn-wa-small').forEach(btn => {
@@ -975,7 +1119,7 @@
         e.preventDefault();
         const product = this.dataset.product;
         const price = this.dataset.price;
-        openModal(product, price);
+        openNameModal(product, price);
       });
     });
 
@@ -988,10 +1132,10 @@
       }
     });
 
-    cancelBtn.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', closeNameModal);
     
-    modalOverlay.addEventListener('click', (e) => {
-      if (e.target === modalOverlay) closeModal();
+    nameModalOverlay.addEventListener('click', (e) => {
+      if (e.target === nameModalOverlay) closeNameModal();
     });
 
     customerNameInput.addEventListener('keypress', (e) => {
@@ -1002,26 +1146,56 @@
       }
     });
 
+    // Our Story Modal
+    const storyModalOverlay = document.getElementById('storyModal');
+    const ourStoryBtn = document.getElementById('ourStoryBtn');
+    const closeStoryBtn = document.getElementById('closeStoryBtn');
+
+    ourStoryBtn.addEventListener('click', () => {
+      storyModalOverlay.classList.add('active');
+    });
+
+    closeStoryBtn.addEventListener('click', () => {
+      storyModalOverlay.classList.remove('active');
+    });
+
+    storyModalOverlay.addEventListener('click', (e) => {
+      if (e.target === storyModalOverlay) {
+        storyModalOverlay.classList.remove('active');
+      }
+    });
+
+    // Video modal
+    const videoModal = document.getElementById('videoModal');
+    const watchBtn = document.getElementById('watchVideoBtn');
+    const closeVideoBtn = document.getElementById('closeVideoBtn');
+    const videoIframe = document.getElementById('welcomeVideo');
+    
+    watchBtn.addEventListener('click', () => {
+      videoModal.classList.add('active');
+      videoIframe.src = "https://www.youtube.com/embed/Evji_ebWZQU?autoplay=1";
+    });
+    
+    function closeVideoModal() {
+      videoModal.classList.remove('active');
+      videoIframe.src = "https://www.youtube.com/embed/Evji_ebWZQU?autoplay=0";
+    }
+    
+    closeVideoBtn.addEventListener('click', closeVideoModal);
+    videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeVideoModal(); });
+
+    // Reveal animations
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     reveals.forEach(r => observer.observe(r));
 
-    const modal = document.getElementById('videoModal');
-    const watchBtn = document.getElementById('watchVideoBtn');
-    const closeBtn = document.getElementById('closeVideoBtn');
-    const videoIframe = document.getElementById('welcomeVideo');
-    watchBtn.addEventListener('click', () => {
-      modal.classList.add('active');
-      videoIframe.src = "https://www.youtube.com/embed/Evji_ebWZQU?autoplay=1";
-    });
-    function closeVideoModal() {
-      modal.classList.remove('active');
-      videoIframe.src = "https://www.youtube.com/embed/Evji_ebWZQU?autoplay=0";
-    }
-    closeBtn.addEventListener('click', closeVideoModal);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeVideoModal(); });
+    // Owner image fallback
+    const ownerImg = document.getElementById('ownerImage');
+    ownerImg.onerror = function() {
+      this.src = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%23F5B841\'/%3E%3Ccircle cx=\'50\' cy=\'40\' r=\'15\' fill=\'%230A0F0D\'/%3E%3Cpath d=\'M20 70 Q50 85 80 70\' stroke=\'%230A0F0D\' stroke-width=\'4\' fill=\'none\'/%3E%3Ctext x=\'50\' y=\'92\' text-anchor=\'middle\' fill=\'%230A0F0D\' font-size=\'10\' font-weight=\'bold\'%3EHAPPY%3C/text%3E%3C/svg%3E';
+    };
   });
 
   function handleNewsletter(event) {
