@@ -1206,13 +1206,7 @@
     const closeVideoBtn = document.getElementById('closeVideoBtn');
     const videoIframe = document.getElementById('welcomeVideo');
     
-    // Video modal
-const videoModal = document.getElementById('videoModal');
-const watchBtn = document.getElementById('watchVideoBtn');
-const closeVideoBtn = document.getElementById('closeVideoBtn');
-const video = document.getElementById('welcomeVideo');
-
-watchBtn.addEventListener('click', () => {
+  watchBtn.addEventListener('click', () => {
   videoModal.classList.add('active');
   video.currentTime = 0;
   video.play();
