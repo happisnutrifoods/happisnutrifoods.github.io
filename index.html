@@ -584,7 +584,9 @@
 
 /* Main container */
 .video-box {
-  width: min(1100px, 96vw);
+  width: 100%;
+  max-width: 500px; /* controls circle size */
+  margin: auto;
   position: relative;
   animation: popIn 0.35s ease-out;
 }
@@ -601,49 +603,45 @@
   }
 }
 
-/* Frame with glow */
-/* Frame with organic circular feel */
 .video-frame {
   width: 100%;
-  aspect-ratio: 1 / 1; /* makes it more circular */
-  max-height: 80vh;
-  margin: auto;
-  border-radius: 50%; /* 🌿 circle shape */
+  aspect-ratio: 1 / 1; /* FORCE PERFECT CIRCLE */
+  border-radius: 50%;
   overflow: hidden;
   position: relative;
   background: #000;
 
   box-shadow:
-    0 0 0 2px rgba(245,184,65,0.25),
+    0 0 0 3px rgba(245,184,65,0.25),
     0 20px 60px rgba(0,0,0,0.8),
-    0 0 50px rgba(245,184,65,0.25);
+    0 0 60px rgba(245,184,65,0.3);
 }
 
-/* Soft golden glow ring */
+/* Glow ring */
 .video-frame::before {
   content: "";
   position: absolute;
-  inset: -6px;
+  inset: -8px;
   border-radius: 50%;
-  background: radial-gradient(circle, #F5B84140, transparent 70%);
+  background: radial-gradient(circle, #F5B84155, transparent 70%);
   z-index: -1;
   filter: blur(12px);
 }
 
-/* Decorative “leaf/flower aura” */
+/* Animated organic aura */
 .video-frame::after {
   content: "";
   position: absolute;
-  inset: -20px;
+  inset: -25px;
   border-radius: 50%;
   background: conic-gradient(
     from 0deg,
-    rgba(245,184,65,0.15),
-    rgba(120,200,120,0.15),
-    rgba(245,184,65,0.15)
+    rgba(245,184,65,0.2),
+    rgba(120,200,120,0.2),
+    rgba(245,184,65,0.2)
   );
-  filter: blur(25px);
-  animation: rotateAura 10s linear infinite;
+  filter: blur(30px);
+  animation: rotateAura 8s linear infinite;
   z-index: -2;
 }
 
@@ -652,11 +650,11 @@
   to { transform: rotate(360deg); }
 }
 
-/* Video inside circle */
+/* Video fits circle */
 .video-frame video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* fills circle nicely */
+  object-fit: cover;
   border-radius: 50%;
 }
 
@@ -685,9 +683,8 @@
 }
 
 @media (max-width: 768px) {
-  .video-frame {
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
+  .video-box {
+    max-width: 85vw;
   }
 }
 
