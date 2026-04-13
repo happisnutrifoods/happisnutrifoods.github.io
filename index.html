@@ -558,44 +558,40 @@
    VIDEO MODAL (NEW DESIGN)
 ========================= */
 
-/* =========================
-   VIDEO MODAL (NEW DESIGN)
-========================= */
 .video-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.88);
+  background: rgba(0,0,0,0.88);
   display: none;
   justify-content: center;
   align-items: center;
   z-index: 9999;
   backdrop-filter: blur(10px);
-  padding: 1.5rem;
+  padding: 2rem 1rem;
   box-sizing: border-box;
 }
 .video-overlay.active {
   display: flex;
 }
 
-/* Wrapper handles close button positioning — NO overflow:hidden here */
+/* wrapper: owns the close button, no clipping */
 .video-wrapper {
   position: relative;
-  width: min(100%, 1000px);
+  width: 100%;
+  max-width: 900px;
 }
 
-/* Container handles shape + clipping */
+/* container: clips the video, never clips the button */
 .video-container {
-  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
   background: #000;
-  border-radius: 18px;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(245, 184, 65, 0.25);
+  border: 1px solid rgba(245,184,65,0.25);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
 }
 
-/* Video itself */
 #welcomeVideo {
   width: 100%;
   height: 100%;
@@ -603,47 +599,44 @@
   display: block;
 }
 
-/* Close button — lives on wrapper, never clipped */
+/* close button lives on wrapper — never clipped */
 .close-video {
   position: absolute;
   top: -14px;
   right: -14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   background: #fff;
   border: none;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1;
   cursor: pointer;
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  color: #222;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+  transition: transform 0.15s ease;
   z-index: 10;
-  transition: transform 0.2s ease;
 }
 .close-video:hover {
   transform: scale(1.1);
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .video-overlay {
-    padding: 1rem;
+    padding: 3rem 0.75rem 1rem; /* top padding makes room for close btn */
   }
   .video-wrapper {
     width: 100%;
   }
   .video-container {
-    border-radius: 12px;
+    border-radius: 10px;
   }
   .close-video {
-    top: -12px;
-    right: -12px;
-    width: 32px;
-    height: 32px;
-    font-size: 16px;
+    top: -14px;
+    right: 0; /* flush to right edge on small screens */
   }
 }
     .trust-strip {
