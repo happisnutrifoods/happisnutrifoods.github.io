@@ -1225,13 +1225,21 @@ const watchBtn = document.getElementById('watchVideoBtn');
 const closeVideoBtn = document.getElementById('closeVideoBtn');
 const video = document.getElementById('welcomeVideo');
 
-watchBtn.addEventListener('click', () => {
+watchBtn.addEventListener('click', async () => {
   videoModal.classList.add('active');
 
-  video.muted = true;        // 🔇 required for autoplay
   video.currentTime = 0;
 
-  video.play();              // ▶️ autoplay when opened
+  // Try unmuted playback first
+  video.muted = false;
+
+  try {
+    await video.play();
+  } catch (err) {
+    // Fallback: if browser blocks sound autoplay
+    video.muted = true;
+    await video.play();
+  }
 });
 
 function closeVideoModal() {
