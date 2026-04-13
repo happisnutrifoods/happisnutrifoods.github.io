@@ -1206,19 +1206,29 @@
     const closeVideoBtn = document.getElementById('closeVideoBtn');
     const videoIframe = document.getElementById('welcomeVideo');
     
-    watchBtn.addEventListener('click', () => {
-      videoModal.classList.add('active');
-      videoIframe.src = "https://www.youtube.com/embed/Evji_ebWZQU?autoplay=1";
-    });
-    
-    function closeVideoModal() {
-      videoModal.classList.remove('active');
-      videoIframe.src = "https://www.youtube.com/embed/Evji_ebWZQU?autoplay=0";
-    }
-    
-    closeVideoBtn.addEventListener('click', closeVideoModal);
-    videoModal.addEventListener('click', (e) => { if (e.target === videoModal) closeVideoModal(); });
+    // Video modal
+const videoModal = document.getElementById('videoModal');
+const watchBtn = document.getElementById('watchVideoBtn');
+const closeVideoBtn = document.getElementById('closeVideoBtn');
+const video = document.getElementById('welcomeVideo');
 
+watchBtn.addEventListener('click', () => {
+  videoModal.classList.add('active');
+  video.currentTime = 0;
+  video.play();
+});
+
+function closeVideoModal() {
+  videoModal.classList.remove('active');
+  video.pause();
+  video.currentTime = 0;
+}
+
+closeVideoBtn.addEventListener('click', closeVideoModal);
+
+videoModal.addEventListener('click', (e) => {
+  if (e.target === videoModal) closeVideoModal();
+});
     // Reveal animations
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
