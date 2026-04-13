@@ -955,11 +955,16 @@
   </section>
 
   <div id="videoModal" class="video-overlay">
-    <div class="video-container">
-      <button class="close-video" id="closeVideoBtn">✕</button>
-      <iframe id="welcomeVideo" width="100%" height="100%" src="https://www.youtube.com/embed/Evji_ebWZQU?autoplay=0" title="Welcome to Happi's Nutri Food" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
+  <div class="video-container">
+    <button class="close-video" id="closeVideoBtn">✕</button>
+    
+    <video id="welcomeVideo" width="100%" height="100%" controls autoplay>
+      <source src="VIDEO.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
   </div>
+</div>
 
   <div class="trust-strip">
     <div class="container">
