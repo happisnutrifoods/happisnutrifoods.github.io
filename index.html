@@ -583,9 +583,9 @@
 }
 
 /* Main container */
-.video-container {
+.video-box {
   width: 100%;
-  max-width: 500px;
+  max-width: 500px; /* controls circle size */
   margin: auto;
   position: relative;
   animation: popIn 0.35s ease-out;
@@ -609,10 +609,16 @@
   overflow: hidden;
   position: relative;
   background: #000;
+
+  /* ORGANIC SHAPE */
   border-radius: 40px 60px 50px 70px / 60px 40px 70px 50px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 40px rgba(245,184,65,0.25);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.8),
+    0 0 40px rgba(245,184,65,0.25);
 }
 
+/* Glow */
 .video-frame::before {
   content: "";
   position: absolute;
@@ -622,11 +628,17 @@
   filter: blur(20px);
 }
 
+/* Soft animated organic light */
 .video-frame::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, transparent, rgba(245,184,65,0.15), transparent);
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(245,184,65,0.15),
+    transparent
+  );
   animation: shineMove 4s infinite linear;
 }
 
@@ -635,12 +647,13 @@
   100% { transform: translateX(100%); }
 }
 
+/* Video */
 .video-frame video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
+/* Close button (premium floating style) */
 .close-video {
   position: absolute;
   top: -16px;
@@ -656,7 +669,6 @@
   color: #111;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   transition: all 0.2s ease;
-  z-index: 20;
 }
 
 .close-video:hover {
@@ -666,12 +678,15 @@
 }
 
 @media (max-width: 768px) {
-  .video-container {
+  .video-box {
     max-width: 85vw;
   }
+}
+
   .video-frame {
     border-radius: 14px;
   }
+
   .close-video {
     top: -12px;
     right: -12px;
@@ -933,7 +948,7 @@
 </head>
 <body>
 
-<!-- Modals -->
+<!-- Modals remain the same -->
 <div class="name-modal-overlay" id="nameModal">
   <div class="name-modal">
     <i class="fas fa-user-circle"></i>
@@ -1039,13 +1054,14 @@
 
   <div id="videoModal" class="video-overlay">
   <div class="video-container">
+
     <button class="close-video" id="closeVideoBtn">✕</button>
-    <div class="video-frame">
-      <video id="welcomeVideo" controls muted playsinline>
-        <source src="https://happisnutrifoods.name.ng/VIDEO.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-    </div>
+
+    <video id="welcomeVideo" controls muted playsinline>
+      <source src="https://happisnutrifoods.name.ng/VIDEO.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
   </div>
 </div>
 
@@ -1128,10 +1144,7 @@
       <div class="footer-col"><h4>Categories</h4><ul><li><a href="#products">Tom Brown</a></li><li><a href="#products">Soybeans</a></li></ul></div>
       <div class="footer-col"><h4>Contact</h4><div class="contact-item"><i class="fas fa-phone-alt"></i><a href="tel:+2349019798281">+234 901 979 8281</a></div><div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:happinutrifoods@gmail.com">happinutrifoods@gmail.com</a></div><div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Port Harcourt, Nigeria</span></div><div class="contact-item"><i class="fas fa-check-circle"></i><span>Verified Business</span></div></div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 Happi's Nutri Foods</p>
-      <p>Developed with ❤️ by <a href="https://wa.me/2348132084092" style="color:#F5B841; text-decoration:none;">ESAU DE GENIUS</a></p>
-    </div>
+    <div class="footer-bottom"><p>© 2026 Happi's Nutri Foods</p><p>Developed by <a href="https://wa.me/2348132084092" style="color:#F5B841;">Esau De Genius</a></p></div>
   </div>
 </footer>
 
@@ -1286,6 +1299,7 @@ const testimonials = [
     });
 
     // Video modal
+ // Video modal
 const videoModal = document.getElementById('videoModal');
 const watchBtn = document.getElementById('watchVideoBtn');
 const closeVideoBtn = document.getElementById('closeVideoBtn');
@@ -1293,23 +1307,29 @@ const video = document.getElementById('welcomeVideo');
 
 watchBtn.addEventListener('click', async () => {
   videoModal.classList.add('active');
+
   video.currentTime = 0;
+
+  // Try unmuted playback first
   video.muted = false;
+
   try {
     await video.play();
   } catch (err) {
+    // Fallback: if browser blocks sound autoplay
     video.muted = true;
     await video.play();
   }
 });
 
 function closeVideoModal() {
-  video.pause();
-  video.currentTime = 0;
+  video.pause();             // ⏹ stop video
+  video.currentTime = 0;     // reset
   videoModal.classList.remove('active');
 }
 
 closeVideoBtn.addEventListener('click', closeVideoModal);
+
 videoModal.addEventListener('click', (e) => {
   if (e.target === videoModal) {
     closeVideoModal();
