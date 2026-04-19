@@ -1154,34 +1154,180 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
 const testimonials = [
-  { name: "Amina Bello", location: "Kano, Nigeria", text: "Tom Brown from Happi's Nutri Foods is the best I've ever tasted. My children love it! Pure and healthy.", rating: 5 },
-  { name: "Chidi Eze", location: "Enugu, Nigeria", text: "Soybean quality is top-notch. I make the creamiest milk. Fast delivery to the East.", rating: 5 },
-  { name: "Tunde Adebayo", location: "Lagos, Nigeria", text: "I recommend Happi's Nutri Foods to everyone. Organic and affordable. My energy levels are through the roof.", rating: 5 },
-  { name: "Fatima Zainab", location: "Kaduna, Nigeria", text: "Excellent customer service. The Tom Brown Classic Pack is a family favorite.", rating: 5 },
-  { name: "Emeka Okafor", location: "Anambra, Nigeria", text: "No regrets! The Soybean Powder Premium Family Pack is perfect for my fitness diet. Thank you Happi's.", rating: 5 },
-  { name: "Rukayat Sadiq", location: "Ilorin, Nigeria", text: "I've tried many brands, Happi's Nutri Foods is the real deal. 100% natural goodness.", rating: 5 },
-  { name: "Bello Mohammed", location: "Abuja, Nigeria", text: "Delivery was swift. The packaging is premium and the product is fresh.", rating: 5 },
-  { name: "Ngozi Uche", location: "Imo, Nigeria", text: "My mum loves the Tom Brown. It reminds her of the village taste but cleaner.", rating: 5 },
-  { name: "Yusuf Ibrahim", location: "Sokoto, Nigeria", text: "I've been using their soybeans for months. Very clean, no stones. Highly recommended.", rating: 5 },
-  { name: "Efe Johnson", location: "Delta, Nigeria", text: "The best organic food plug in the South-South. Quick response on WhatsApp.", rating: 5 },
-  { name: "Hauwa Lawal", location: "Bauchi, Nigeria", text: "My weaning baby loves the Tom Brown Classic Pack. Nutritious and easy to digest.", rating: 5 },
-  { name: "Olumide Fashola", location: "Oyo, Nigeria", text: "I'm a repeat customer. The quality is consistent. Keep it up!", rating: 5 },
-  { name: "Gloria Briggs", location: "Rivers, Nigeria", text: "Port Harcourt deliveries are super fast. The Tom Brown is my breakfast staple.", rating: 5 },
-  { name: "Sani Gambo", location: "Gombe, Nigeria", text: "Alhamdulillah, I found a reliable source for organic soybeans. Great for my farm produce business.", rating: 5 },
-  { name: "Chioma Nwankwo", location: "Abia, Nigeria", text: "I love that it's chemical-free. My skin and body feel the difference.", rating: 5 },
-  { name: "Danjuma Musa", location: "Taraba, Nigeria", text: "The Soybean Powder Starter Pack is perfect for my travels. Very convenient.", rating: 5 },
-  { name: "Esther Oladipo", location: "Ondo, Nigeria", text: "Happi's Nutri Foods is a blessing. Affordable, healthy, and delicious.", rating: 5 },
-  { name: "Ibrahim Tijani", location: "Yobe, Nigeria", text: "I ordered for my family in Damaturu, delivery came through without issues.", rating: 5 },
-  { name: "Joy Effiong", location: "Cross River, Nigeria", text: "The aroma of the Tom Brown is heavenly. Tastes like pure wellness.", rating: 5 },
-  { name: "Usman Danjuma", location: "Niger, Nigeria", text: "I recommend the Soybean Powder Premium Family Pack. High protein, low fat, just what I needed.", rating: 5 },
-  { name: "Ifeanyi Madu", location: "Ebonyi, Nigeria", text: "I've referred all my friends. Best decision I made for my health.", rating: 5 },
-  { name: "Zainab Abdullahi", location: "Jigawa, Nigeria", text: "My family loves the Tom Brown. We've switched completely to Happi's.", rating: 5 },
-  { name: "Femi Adekunle", location: "Ekiti, Nigeria", text: "Quality speaks for itself. The packaging is also very attractive.", rating: 5 },
-  { name: "Hadiza Bala", location: "Borno, Nigeria", text: "I'm happy with the fast response and the quality of the soybeans.", rating: 5 },
-  { name: "Obinna Nwoye", location: "Benue, Nigeria", text: "The food basket of the nation approves! Great products.", rating: 5 },
-  { name: "Adesua Egharevba", location: "Edo, Nigeria", text: "Finally a brand that cares about what we consume. Thank you Happi's.", rating: 5 },
-  { name: "Musa Waziri", location: "Zamfara, Nigeria", text: "Very good customer relations. I will keep ordering.", rating: 5 },
-  { name: "Patience Jonathan", location: "Bayelsa, Nigeria", text: "I got my delivery in Yenagoa. Smooth transaction. Great taste.", rating: 5 }
+  {
+    name: "Godknows Ogubie",
+    location: "Rivers, Nigeria",
+    text: "The Tom Brown i love it! It tastes so nice and creamy. I'd get the bigger one soon 😁. You're doing so well.",
+    rating: 5
+  },
+  {
+    name: "Amina Bello",
+    location: "Kano, Nigeria",
+    text: "Tom Brown from Happi's Nutri Foods is the best I've ever tasted. My children love it! Pure and healthy.",
+    rating: 5
+  },
+  {
+    name: "Chidi Eze",
+    location: "Enugu, Nigeria",
+    text: "Soybean quality is top-notch. I make the creamiest milk. Fast delivery to the East.",
+    rating: 5
+  },
+  {
+    name: "Tunde Adebayo",
+    location: "Lagos, Nigeria",
+    text: "I recommend Happi's Nutri Foods to everyone. Organic and affordable. My energy levels are through the roof.",
+    rating: 5
+  },
+  {
+    name: "Fatima Zainab",
+    location: "Kaduna, Nigeria",
+    text: "Excellent customer service. The Tom Brown Classic Pack is a family favorite.",
+    rating: 5
+  },
+  {
+    name: "Emeka Okafor",
+    location: "Anambra, Nigeria",
+    text: "No regrets! The Soybean Powder Premium Family Pack is perfect for my fitness diet. Thank you Happi's.",
+    rating: 5
+  },
+  {
+    name: "Rukayat Sadiq",
+    location: "Ilorin, Nigeria",
+    text: "I've tried many brands, Happi's Nutri Foods is the real deal. 100% natural goodness.",
+    rating: 5
+  },
+  {
+    name: "Bello Mohammed",
+    location: "Abuja, Nigeria",
+    text: "Delivery was swift. The packaging is premium and the product is fresh.",
+    rating: 5
+  },
+  {
+    name: "Ngozi Uche",
+    location: "Imo, Nigeria",
+    text: "My mum loves the Tom Brown. It reminds her of the village taste but cleaner.",
+    rating: 5
+  },
+  {
+    name: "Yusuf Ibrahim",
+    location: "Sokoto, Nigeria",
+    text: "I've been using their soybeans for months. Very clean, no stones. Highly recommended.",
+    rating: 5
+  },
+  {
+    name: "Efe Johnson",
+    location: "Delta, Nigeria",
+    text: "The best organic food plug in the South-South. Quick response on WhatsApp.",
+    rating: 5
+  },
+  {
+    name: "Hauwa Lawal",
+    location: "Bauchi, Nigeria",
+    text: "My weaning baby loves the Tom Brown Classic Pack. Nutritious and easy to digest.",
+    rating: 5
+  },
+  {
+    name: "Olumide Fashola",
+    location: "Oyo, Nigeria",
+    text: "I'm a repeat customer. The quality is consistent. Keep it up!",
+    rating: 5
+  },
+  {
+    name: "Gloria Briggs",
+    location: "Rivers, Nigeria",
+    text: "Port Harcourt deliveries are super fast. The Tom Brown is my breakfast staple.",
+    rating: 5
+  },
+  {
+    name: "Sani Gambo",
+    location: "Gombe, Nigeria",
+    text: "Alhamdulillah, I found a reliable source for organic soybeans. Great for my farm produce business.",
+    rating: 5
+  },
+  {
+    name: "Chioma Nwankwo",
+    location: "Abia, Nigeria",
+    text: "I love that it's chemical-free. My skin and body feel the difference.",
+    rating: 5
+  },
+  {
+    name: "Danjuma Musa",
+    location: "Taraba, Nigeria",
+    text: "The Soybean Powder Starter Pack is perfect for my travels. Very convenient.",
+    rating: 5
+  },
+  {
+    name: "Esther Oladipo",
+    location: "Ondo, Nigeria",
+    text: "Happi's Nutri Foods is a blessing. Affordable, healthy, and delicious.",
+    rating: 5
+  },
+  {
+    name: "Ibrahim Tijani",
+    location: "Yobe, Nigeria",
+    text: "I ordered for my family in Damaturu, delivery came through without issues.",
+    rating: 5
+  },
+  {
+    name: "Joy Effiong",
+    location: "Cross River, Nigeria",
+    text: "The aroma of the Tom Brown is heavenly. Tastes like pure wellness.",
+    rating: 5
+  },
+  {
+    name: "Usman Danjuma",
+    location: "Niger, Nigeria",
+    text: "I recommend the Soybean Powder Premium Family Pack. High protein, low fat, just what I needed.",
+    rating: 5
+  },
+  {
+    name: "Ifeanyi Madu",
+    location: "Ebonyi, Nigeria",
+    text: "I've referred all my friends. Best decision I made for my health.",
+    rating: 5
+  },
+  {
+    name: "Zainab Abdullahi",
+    location: "Jigawa, Nigeria",
+    text: "My family loves the Tom Brown. We've switched completely to Happi's.",
+    rating: 5
+  },
+  {
+    name: "Femi Adekunle",
+    location: "Ekiti, Nigeria",
+    text: "Quality speaks for itself. The packaging is also very attractive.",
+    rating: 5
+  },
+  {
+    name: "Hadiza Bala",
+    location: "Borno, Nigeria",
+    text: "I'm happy with the fast response and the quality of the soybeans.",
+    rating: 5
+  },
+  {
+    name: "Obinna Nwoye",
+    location: "Benue, Nigeria",
+    text: "The food basket of the nation approves! Great products.",
+    rating: 5
+  },
+  {
+    name: "Adesua Egharevba",
+    location: "Edo, Nigeria",
+    text: "Finally a brand that cares about what we consume. Thank you Happi's.",
+    rating: 5
+  },
+  {
+    name: "Musa Waziri",
+    location: "Zamfara, Nigeria",
+    text: "Very good customer relations. I will keep ordering.",
+    rating: 5
+  },
+  {
+    name: "Patience Jonathan",
+    location: "Bayelsa, Nigeria",
+    text: "I got my delivery in Yenagoa. Smooth transaction. Great taste.",
+    rating: 5
+  }
 ];
   const wrapper = document.getElementById('testimonialWrapper');
   testimonials.forEach(t => {
