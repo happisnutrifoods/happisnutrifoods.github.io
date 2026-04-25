@@ -944,9 +944,270 @@
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* =============================================
+       PROMO POPUP — INJECTION START
+    ============================================= */
+    #promoPopupOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+    #promoPopupOverlay.promo-active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .promo-popup-box {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: linear-gradient(160deg, #1A2A1A 0%, #0E1A10 100%);
+      border: 2px solid #F5B841;
+      box-shadow:
+        0 0 0 1px rgba(245, 184, 65, 0.15),
+        0 0 40px rgba(245, 184, 65, 0.25),
+        0 30px 70px rgba(0, 0, 0, 0.7);
+      transform: scale(0.88) translateY(20px);
+      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      animation: none;
+    }
+    #promoPopupOverlay.promo-active .promo-popup-box {
+      transform: scale(1) translateY(0);
+    }
+
+    /* Corner sparkle accents */
+    .promo-popup-box::before,
+    .promo-popup-box::after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245, 184, 65, 0.35), transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .promo-popup-box::before { top: -20px; left: -20px; }
+    .promo-popup-box::after  { bottom: -20px; right: -20px; }
+
+    /* Animated top ribbon */
+    .promo-ribbon {
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(90deg, #E6892E, #F5B841, #FFD966, #F5B841, #E6892E);
+      background-size: 300% 100%;
+      animation: ribbonShimmer 3s linear infinite;
+      padding: 0.45rem 1rem;
+      text-align: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #0A0F0D;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    @keyframes ribbonShimmer {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+
+    /* Promo image */
+    .promo-img-wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      background: #0A0F0D;
+      line-height: 0;
+    }
+    .promo-img-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      max-height: 340px;
+    }
+
+    /* Countdown bar */
+    .promo-footer {
+      position: relative;
+      z-index: 2;
+      padding: 0.9rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      background: rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(245, 184, 65, 0.2);
+    }
+    .promo-countdown-label {
+      font-size: 0.68rem;
+      color: #B0C8A8;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .promo-countdown-label i {
+      color: #F5B841;
+      margin-right: 0.3rem;
+    }
+    .promo-timer {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+    }
+    .promo-timer-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(245, 184, 65, 0.1);
+      border: 1px solid rgba(245, 184, 65, 0.3);
+      border-radius: 8px;
+      padding: 0.3rem 0.5rem;
+      min-width: 38px;
+    }
+    .promo-timer-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #F5B841;
+      line-height: 1;
+    }
+    .promo-timer-lbl {
+      font-size: 0.55rem;
+      color: #889C88;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 0.15rem;
+    }
+    .promo-timer-sep {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #F5B841;
+      opacity: 0.6;
+      animation: blinkSep 1s step-end infinite;
+      margin-bottom: 0.8rem;
+    }
+    @keyframes blinkSep {
+      0%, 100% { opacity: 0.6; }
+      50%       { opacity: 0.1; }
+    }
+
+    /* Close button */
+    .promo-close-btn {
+      position: absolute;
+      top: 0.55rem;
+      right: 0.6rem;
+      z-index: 10;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(245, 184, 65, 0.5);
+      background: rgba(10, 15, 13, 0.8);
+      color: #F5B841;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      line-height: 1;
+    }
+    .promo-close-btn:hover {
+      background: #F5B841;
+      color: #0A0F0D;
+      transform: rotate(90deg) scale(1.1);
+    }
+
+    /* Order CTA inside popup */
+    .promo-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #25D366;
+      color: #0A0F0D;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 0.55rem 1.2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+    }
+    .promo-cta-btn:hover {
+      background: #1fbc5c;
+      transform: scale(1.04);
+    }
+
+    @media (max-width: 480px) {
+      .promo-popup-box { border-radius: 20px; max-width: 95vw; }
+      .promo-img-wrapper img { max-height: 240px; }
+      .promo-timer-num { font-size: 0.95rem; }
+      .promo-timer-unit { min-width: 32px; padding: 0.25rem 0.35rem; }
+      .promo-footer { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
+    }
+    /* =============================================
+       PROMO POPUP — INJECTION END
+    ============================================= */
   </style>
 </head>
 <body>
+
+  <!-- =============================================
+       PROMO POPUP HTML — INJECTION START
+  ============================================= -->
+  <div id="promoPopupOverlay" role="dialog" aria-modal="true" aria-label="Promotional Offer">
+    <div class="promo-popup-box">
+      <button class="promo-close-btn" id="promoCloseBtn" aria-label="Close promo">&times;</button>
+      <div class="promo-ribbon">🔥 Limited Time Offer &nbsp;·&nbsp; Ends April 30, 2026 &nbsp;·&nbsp; Don't Miss Out 🌿</div>
+      <div class="promo-img-wrapper">
+        <img src="Promo.jpg" alt="Happi's Nutri Foods Special Promo" onerror="this.style.display='none'">
+      </div>
+      <div class="promo-footer">
+        <span class="promo-countdown-label"><i class="fas fa-clock"></i>Offer ends in</span>
+        <div class="promo-timer">
+          <div class="promo-timer-unit">
+            <span class="promo-timer-num" id="promoDays">00</span>
+            <span class="promo-timer-lbl">Days</span>
+          </div>
+          <span class="promo-timer-sep">:</span>
+          <div class="promo-timer-unit">
+            <span class="promo-timer-num" id="promoHours">00</span>
+            <span class="promo-timer-lbl">Hrs</span>
+          </div>
+          <span class="promo-timer-sep">:</span>
+          <div class="promo-timer-unit">
+            <span class="promo-timer-num" id="promoMins">00</span>
+            <span class="promo-timer-lbl">Min</span>
+          </div>
+          <span class="promo-timer-sep">:</span>
+          <div class="promo-timer-unit">
+            <span class="promo-timer-num" id="promoSecs">00</span>
+            <span class="promo-timer-lbl">Sec</span>
+          </div>
+        </div>
+        <a href="https://wa.me/2349019798281?text=Hello!%20I%20saw%20your%20promo%20and%20want%20to%20order%20now%20%F0%9F%8C%BF" target="_blank" class="promo-cta-btn"><i class="fab fa-whatsapp"></i> Order Now</a>
+      </div>
+    </div>
+  </div>
+  <!-- =============================================
+       PROMO POPUP HTML — INJECTION END
+  ============================================= -->
 
 <!-- Modals remain the same -->
 <div class="name-modal-overlay" id="nameModal">
@@ -1498,6 +1759,72 @@ videoModal.addEventListener('click', (e) => {
   }
   window.handleNewsletter = handleNewsletter;
 </script>
+
+  <!-- =============================================
+       PROMO POPUP SCRIPT — INJECTION START
+  ============================================= -->
+  <script>
+  (function () {
+    // Promo is active from April 24 00:00:00 to April 30 23:59:59 (WAT / user local)
+    // Expires at the stroke of May 1, 2026 00:00:00 local time
+    var PROMO_START = new Date('2026-04-24T00:00:00').getTime();
+    var PROMO_END   = new Date('2026-05-01T00:00:00').getTime(); // midnight breaking May 1
+
+    var overlay   = document.getElementById('promoPopupOverlay');
+    var closeBtn  = document.getElementById('promoCloseBtn');
+    var daysEl    = document.getElementById('promoDays');
+    var hoursEl   = document.getElementById('promoHours');
+    var minsEl    = document.getElementById('promoMins');
+    var secsEl    = document.getElementById('promoSecs');
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function updateCountdown() {
+      var remaining = PROMO_END - Date.now();
+      if (remaining <= 0) {
+        daysEl.textContent = hoursEl.textContent = minsEl.textContent = secsEl.textContent = '00';
+        closePromo();
+        return;
+      }
+      var d = Math.floor(remaining / 86400000);
+      var h = Math.floor((remaining % 86400000) / 3600000);
+      var m = Math.floor((remaining % 3600000) / 60000);
+      var s = Math.floor((remaining % 60000) / 1000);
+      daysEl.textContent  = pad(d);
+      hoursEl.textContent = pad(h);
+      minsEl.textContent  = pad(m);
+      secsEl.textContent  = pad(s);
+    }
+
+    function closePromo() {
+      overlay.classList.remove('promo-active');
+      clearInterval(window._promoTimer);
+    }
+
+    function showPromo() {
+      overlay.classList.add('promo-active');
+      updateCountdown();
+      window._promoTimer = setInterval(updateCountdown, 1000);
+    }
+
+    // Only show within the active promo window
+    var now = Date.now();
+    if (now >= PROMO_START && now < PROMO_END) {
+      // Delay 1.5 s so the page settles first
+      setTimeout(showPromo, 1500);
+    }
+
+    // Close on button or backdrop click
+    closeBtn.addEventListener('click', closePromo);
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closePromo();
+    });
+  })();
+  </script>
+  <!-- =============================================
+       PROMO POPUP SCRIPT — INJECTION END
+  ============================================= -->
+
   <!--Start of Tawk.to Script-->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
